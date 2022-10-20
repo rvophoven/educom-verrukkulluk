@@ -14,7 +14,7 @@ $artikel_id = 2;
 $data = $artikel->allArtikel($artikel_id);
 var_dump($data);
 echo "<pre>";
-$data = $user->searchUser($user_id);
+$data = $user->allUser($user_id);
 var_dump($data);
 echo "<pre>";
 

@@ -8,13 +8,12 @@ class user {
         $this->connection = $connection;
     }
   
-    public function searchUser($id) {
+    public function allUser($user_id) {
 
-      $sql = "SELECT *  FROM users WHERE id = $id";
+      $sql = "SELECT *  FROM users WHERE id = $user_id";
         
       $result = mysqli_query($this->connection, $sql);
-      $data =mysqli_fetch_array($result, MYSQLI_ASSOC);
-      
+      $data =mysqli_fetch_array($result, MYSQLI_ASSOC);    
 
       return($data);
 
