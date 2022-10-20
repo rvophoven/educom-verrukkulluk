@@ -8,29 +8,17 @@ class artikel {
         $this->connection = $connection;
     }
   
-    public function allArtikel($id) {
+    public function allArtikel($artikel_id) {
 
-      $sql = "SELECT *  FROM artikel WHERE id = $id";
+      $sql = "SELECT *  FROM artikel WHERE id = $artikel_id";
         
       $result = mysqli_query($this->connection, $sql);
       $data =mysqli_fetch_array($result, MYSQLI_ASSOC);
       
-
       return($data);
 
     }
 
-    public function searchArtikel($id){
-      
-      $sql = "SELECT *  FROM artikel WHERE name LIKE '%$id%' ";
-        
-      $result = mysqli_query($this->connection, $sql);
-      $data =mysqli_fetch_array($result, MYSQLI_ASSOC);
-      
-
-      return($data);
-
-    }
 
 
 }

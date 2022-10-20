@@ -2,14 +2,20 @@
 
 require_once("lib/database.php");
 require_once("lib/artikel.php");
+require_once("lib/user.php");
 
-/// INIT
+
 $db = new database();
-$art = new artikel($db->getConnection());
+$user = new user($db->getConnection());
+$user_id = 1;
+$artikel = new artikel($db->getConnection());
+$artikel_id = 2;
 
-
-/// VERWERK 
-$data = $art->selecteerArtikel(8);
-
-/// RETURN
+$data = $artikel->allArtikel($artikel_id);
 var_dump($data);
+echo "<pre>";
+$data = $user->searchUser($user_id);
+var_dump($data);
+echo "<pre>";
+
+?>
