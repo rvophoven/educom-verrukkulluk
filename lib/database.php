@@ -3,7 +3,7 @@
 // Aanpassen naar je eigen omgeving
 define("USER", "visual");
 define("PASSWORD", "1234");
-define("DATABASE", "verruk3");
+define("DATABASE", "verruk1");
 define("HOST", "localhost");
 
 class database {
