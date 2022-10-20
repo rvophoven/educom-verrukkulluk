@@ -1,25 +1,4 @@
 <?php
-require_once("lib/database.php");
-require_once("lib/artikel.php");
-require_once("lib/user.php");
-require_once("lib/kitchentype.php");
-require_once("lib/dishinfo.php");
-require_once("lib/ingredients.php");
-require_once("lib/dish.php");
-
-$db = new database();
-$user = new user($db->getConnection());
-$user_id = 2;
-$artikel = new artikel($db->getConnection());
-$artikel_id = 2;
-$kitchentype = new kitchentype($db->getConnection());
-$kitchen_id = 1;
-$type_id = 3;
-$dishinfo = new dishinfo($db->getConnection());
-$dish_id = 2;
-$record_type = "o";
-$ingredient = new ingredient($db->getConnection());
-$dish = new dish($db->getConnection());
 
 class dish{
   private static $connection;
@@ -52,12 +31,35 @@ class dish{
      
   }
 
-  public function calcCalories(){
-    
-    
+  public function calccalories($dish_id){
+    $totcalorie =0;
+    $data = ingredient::selectingredient($dish_id);
+
+    $arrlength = count($data);
+    for($x = 0; $x < $arrlength; $x++) {
+      $artikel = $data[$x];
+      $amount = $artikel['amount'];
+      $calorie = $artikel['calorie'];
+      $totcalorie = $amount/100*$calorie+$totcalorie;
+    }
+
+    return($totcalorie);
   }
 
-  public function calcPrice(){
+  public function calcprice($dish_id){
+    $totprice =0;
+    $data = ingredient::selectingredient($dish_id);
+
+    $arrlength = count($data);
+    for($x = 0; $x < $arrlength;$x++ ) {
+      $artikel = $data[$x];
+      $amount = $artikel['amount'];
+      $content = $artikel['content'];
+      $price = $artikel['price'];
+      $totprice = ceil($amount/$content)*$price+ $totprice ;
+    }
+
+    return($totprice);
     
   }
 

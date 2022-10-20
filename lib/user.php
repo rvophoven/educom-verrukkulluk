@@ -2,17 +2,17 @@
 
 class user {
 
-    private $connection;
+    private static $connection;
 
     public function __construct($connection) {
-        $this->connection = $connection;
+        self::$connection = $connection;
     }
   
-    public function selectUser($user_id) {
+    public static function selectUser($user_id) {
 
       $sql = "SELECT *  FROM users WHERE id = $user_id";
         
-      $result = mysqli_query($this->connection, $sql);
+      $result = mysqli_query(self::$connection, $sql);
       $data =mysqli_fetch_array($result, MYSQLI_ASSOC);    
 
       return($data);
