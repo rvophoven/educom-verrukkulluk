@@ -11,6 +11,7 @@ require_once("lib/kitchentype.php");
 require_once("lib/dishinfo.php");
 require_once("lib/ingredients.php");
 require_once("lib/dish.php");
+require_once("lib/shoplist.php");
 
 // connect to database...........................................
 $db = new database();
@@ -20,6 +21,8 @@ $kitchentype = new kitchentype($db->getConnection());
 $dishinfo = new dishinfo($db->getConnection());
 $ingredient = new ingredient($db->getConnection());
 $dish = new dish($db->getConnection());
+$shoplist = new shoplist($db->getConnection());
+
 
 // set some test values..........................................
 $user_id = 2;
@@ -97,7 +100,11 @@ echo "<pre>";
 echo "Break................................................";
 echo "<pre>";
 //get dishes
-$data = $dish->selectDishes($dish_ids);
+//$data = $dish->selectDishes($dish_ids);
+//var_dump($data);
+//echo "<pre>";
+//get dishes
+$data = $shoplist->selectShoplist($dish_ids);
 var_dump($data);
 echo "<pre>";
 

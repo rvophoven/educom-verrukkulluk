@@ -16,8 +16,8 @@ class dish{
     $this->kitchentype = new kitchentype($connection);
   }
   //get functions classses...............................................
-  public function fetchIngredient($artikel_id){
-    $data = $this->ingredient->selectIngredient($artikel_id);// can also use this instead of $this->fetchIngredient.
+  public function fetchIngredient($dish_id){
+    $data = $this->ingredient->selectIngredient($dish_id);// can also use this instead of $this->fetchIngredient.
     return($data);
   }
 
