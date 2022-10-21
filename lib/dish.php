@@ -1,78 +1,129 @@
 <?php
 
 class dish{
-  private static $connection;
-
+  //set privata variables
+  private $connection;
+  private $ingredient;
+  private $users;
+  private $dishinfo;
+  private $kitchentype;
+  //get new classes......................................................
   public function __construct($connection) {
-      self::$connection = $connection;
+    $this->connection = $connection;
+    $this->ingredient = new ingredient($connection);
+    $this->users = new user($connection);
+    $this->dishinfo = new dishinfo($connection);
+    $this->kitchentype = new kitchentype($connection);
+  }
+  //get functions classses...............................................
+  public function fetchIngredient($artikel_id){
+    $data = $this->ingredient->selectIngredient($artikel_id);// can also use this instead of $this->fetchIngredient.
+    return($data);
   }
 
-  public function selectdish($dish_id){
+  public function fetchUser($artikel_id){
+    $data = $this->users->selectUser($artikel_id);
+    $data = $data['user_name'];
+    return($data);
+  }
+
+  public function fetchDishinfo($artikel_id,$record_type){
+    $data = $this->dishinfo->selectDishinfo($artikel_id,$record_type);
+    return($data);
+  }
+
+  public function fetchKitchentype($artikel_id,$record_type){
+    $data = $this->kitchentype->selectKitchentype($artikel_id,$record_type);
+    return($data);
+  }
+
+  public function selectDish($dish_id){
       $sql = "SELECT *  FROM dish WHERE id = $dish_id";
-      $result = mysqli_query(self::$connection, $sql);
+      $result = mysqli_query($this->connection, $sql);
       $data =mysqli_fetch_array($result, MYSQLI_ASSOC);
       return($data);
   }
 
-  public function selectuser($dish_id){
+  public function selectUser($dish_id){
       //get user id dish
-      $data = self::selectdish($dish_id);
+      $data = $this->selectdish($dish_id);
       //get user name
       $user_id = $data['users_id'];
-      $data = user::selectUser($user_id);
-      $data = $data['user_name'];
+      $data = $this->fetchUser($user_id);// can also use $data['users_id']
       return($data);
-
   }
 
-  public function selectingredient($dish_id){
-    $data = ingredient::selectingredient($dish_id);
-    return($data);
-     
+  public function selectIngredient($dish_id){
+    $data = $this->fetchIngredient($dish_id);
+    return($data);   
   }
-
-  public function calccalories($dish_id){
+// dish functions/methods.................................................
+  public function calcCalories($dish_id){
     $totcalorie =0;
-    $data = ingredient::selectingredient($dish_id);
+    $data = $this->fetchIngredient($dish_id);
 
-    $arrlength = count($data);
-    for($x = 0; $x < $arrlength; $x++) {
-      $artikel = $data[$x];
-      $amount = $artikel['amount'];
-      $calorie = $artikel['calorie'];
-      $totcalorie = $amount/100*$calorie+$totcalorie;
+    foreach($data as $value){
+      $amount = $value['amount'];
+      $calorie = $value['calorie'];
+      $totcalorie += $amount/100*$calorie;
     }
-
+    /*old methode code
+    for($x = 0; $x < count($data); $x++) {
+      $amount = $data[$x]['amount'];
+      $calorie = $data[$x]['calorie'];
+      $totcalorie += $amount/100*$calorie;
+    }
+    */
     return($totcalorie);
   }
 
-  public function calcprice($dish_id){
+  public function calcPrice($dish_id){
     $totprice =0;
-    $data = ingredient::selectingredient($dish_id);
-
-    $arrlength = count($data);
-    for($x = 0; $x < $arrlength;$x++ ) {
-      $artikel = $data[$x];
-      $amount = $artikel['amount'];
-      $content = $artikel['content'];
-      $price = $artikel['price'];
-      $totprice = ceil($amount/$content)*$price+ $totprice ;
+    $data = $this->fetchIngredient($dish_id);
+    foreach($data as $value){
+      $amount = $value['amount'];
+      $content = $value['content'];
+      $price = $value['price'];
+      $totprice += ceil($amount/$content)*$price ;
     }
-
     return($totprice);
+  }
+
+  public function selectRating($dish_id){
+    $data = [];
+    $rating = 0;
+    $data = $this->fetchDishinfo($dish_id,"w");
+
+    foreach($data as $value){
+      $rating += $value['numberfield'];
+    }
+    $rating = $rating/count($data);
+    return($rating);
+  }
+
+  public function selectSteps($dish_id){
+    $data = [];
+    $data2 = [];
+    $data = $this->fetchDishinfo($dish_id,"b");
+
+    foreach($data as $key=>$value){
+      $data2[$key]['number'] = $value['numberfield'];
+      $data2[$key]['step'] = $value['textfield'];
+    }
+    return($data2);
     
   }
 
-  public function selectrating(){
-
-  }
-
-  public function selectsteps(){
-    
-  }
-
-  public function selectremarks(){
-    
+  public function selectRemarks($dish_id){
+    $data = [];
+    $data2 = [];
+    $data = $this->fetchDishinfo($dish_id,"o");
+    foreach($data as $key =>$value){
+      $user_id = $value['users_id'];
+      $data2[$key]['users'] = $this->fetchUser($user_id);
+      $data2[$key]['remark'] = $value['textfield'];
+    }
+    return($data2);
   }
 
 }
