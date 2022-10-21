@@ -34,12 +34,7 @@ class shoplist{
  
     foreach($data3 as $value){
       $key=$value['artikel_id'];
-      if(){
-
-      }
-      else{
-
-      }
+      //krsort sort array on key.
     }
    
 
