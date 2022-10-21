@@ -27,15 +27,17 @@ class dishinfo {
 
     public function addFavorite($dish_id,$user_id){
       $this->deletefavorite($dish_id,$user_id);
-
       $sql = "INSERT INTO dish_info (record_type, dish_id, users_id) VALUES ('f',$dish_id,$user_id)";
       mysqli_query($this->connection, $sql);
-
-
     }
 
     public function deleteFavorite($dish_id,$user_id){
       $sql = "DELETE FROM dish_info WHERE record_type = 'f' AND dish_id = $dish_id AND users_id = $user_id";
+      mysqli_query($this->connection, $sql);
+    }
+
+    public function addStar($dish_id,$stars){
+      $sql = "INSERT INTO dish_info (record_type, dish_id, numberfield) VALUES ('w',$dish_id,$stars)";
       mysqli_query($this->connection, $sql);
     }
 

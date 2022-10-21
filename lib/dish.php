@@ -58,6 +58,10 @@ class dish{
     $data = $this->fetchIngredient($dish_id);
     return($data);   
   }
+
+  public function addStars($dish_id,$stars){
+    $this->dishinfo->addStar($dish_id,$stars);
+  }
 // dish functions/methods.................................................
   //calc calories dish from database
   public function calcCalories($dish_id){
@@ -127,6 +131,7 @@ class dish{
     }
     return($data2);
   }
+
   // get compleet dish from database and send compleet back
   public function selectDish($dish_id){
 
@@ -148,6 +153,15 @@ class dish{
     $data2[2] = $remarks;
     $data2[3] = $steps;
     return($data2);
+
+  }
+  // list of dishes
+  public function selectDishes($dish_ids){
+
+    foreach($dish_ids as $value){
+      $data[] = $this->selectDish($value);
+    }
+    return($data);
 
   }
 

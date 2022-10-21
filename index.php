@@ -28,6 +28,7 @@ $record_type = "o";
 $kitchen_id = 1;
 $type_id = 3;
 $artikel_id = 2;
+$dish_ids = array(1,2);
 
 
 //show data database with function/methode classes................
@@ -91,6 +92,12 @@ var_dump($data);
 echo "<pre>";
 //get dish
 $data = $dish->selectDish($dish_id);
+var_dump($data);
+echo "<pre>";
+echo "Break................................................";
+echo "<pre>";
+//get dishes
+$data = $dish->selectDishes($dish_ids);
 var_dump($data);
 echo "<pre>";
 
