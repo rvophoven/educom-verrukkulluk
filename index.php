@@ -1,5 +1,6 @@
+<!-- some test code.............................................
 <?php
-
+// get lib classes
 require_once("lib/database.php");
 require_once("lib/artikel.php");
 require_once("lib/user.php");
@@ -8,20 +9,25 @@ require_once("lib/dishinfo.php");
 require_once("lib/ingredients.php");
 require_once("lib/dish.php");
 
+// connect to database...........................................
 $db = new database();
 $user = new user($db->getConnection());
-$user_id = 2;
 $artikel = new artikel($db->getConnection());
-$artikel_id = 2;
 $kitchentype = new kitchentype($db->getConnection());
-$kitchen_id = 1;
-$type_id = 3;
 $dishinfo = new dishinfo($db->getConnection());
-$dish_id = 2;
-$record_type = "o";
 $ingredient = new ingredient($db->getConnection());
 $dish = new dish($db->getConnection());
 
+// set some test values..........................................
+$user_id = 2;
+$dish_id = 2;
+$record_type = "o";
+$kitchen_id = 1;
+$type_id = 3;
+$artikel_id = 2;
+
+
+//show data database with function/methode classes................
 //get artikel
 $data = $artikel->selectArtikel($artikel_id);
 var_dump($data);
@@ -31,45 +37,55 @@ $data = $user->selectUser($user_id);
 var_dump($data);
 echo "<pre>";
 //get kitchen
-$data = $kitchentype->selectkitchentype($kitchen_id);
+$data = $kitchentype->selectKitchentype($kitchen_id);
 var_dump($data);
 echo "<pre>";
 //get type
-$data = $kitchentype->selectkitchentype($type_id);
+$data = $kitchentype->selectKitchentype($type_id);
 var_dump($data);
 echo "<pre>";
 //get dishinfo w
-$data = $dishinfo->selectdishinfo($dish_id,$record_type);
+$data = $dishinfo->selectDishinfo($dish_id,$record_type);
 var_dump($data);
 echo "<pre>";
 //add favorite
 //$data = $dishinfo->addfavorite($dish_id,$user_id);
 //echo "<pre>";
 //delete favorite
-$data = $dishinfo->deletefavorite($dish_id,$user_id);
+$data = $dishinfo->deleteFavorite($dish_id,$user_id);
 echo "<pre>";
 //get ingredients
-$data = $ingredient->selectingredient($dish_id);
+$data = $ingredient->selectIngredient($dish_id);
 var_dump($data);
 echo "<pre>";
 //get dish user
-$data = $dish->selectuser($dish_id);
+$data = $dish->selectUser($dish_id);
 var_dump($data);
 echo "<pre>";
 //get dish ingredients
-$data = $dish->selectingredient($dish_id);
+$data = $dish->selectIngredient($dish_id);
 var_dump($data);
 echo "<pre>";
 //get callories
-$data = $dish->calccalories($dish_id);
+$data = $dish->calcCalories($dish_id);
 var_dump($data);
 echo "<pre>";
 //get callories
-$data = $dish->calcprice($dish_id);
+$data = $dish->calcPrice($dish_id);
 var_dump($data);
 echo "<pre>";
-
-
+//get waardering
+$data = $dish->selectRating($dish_id);
+var_dump($data);
+echo "<pre>";
+//get preperation
+$data = $dish->selectSteps($dish_id);
+var_dump($data);
+echo "<pre>";
+//get review
+$data = $dish->selectRemarks($dish_id);
+var_dump($data);
+echo "<pre>";
 
 
 ?>
