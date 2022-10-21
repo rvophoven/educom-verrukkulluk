@@ -26,7 +26,7 @@ class dishinfo {
 
 
     public function addFavorite($dish_id,$user_id){
-      self::deletefavorite($dish_id,$user_id);
+      $this->deletefavorite($dish_id,$user_id);
 
       $sql = "INSERT INTO dish_info (record_type, dish_id, users_id) VALUES ('f',$dish_id,$user_id)";
       mysqli_query($this->connection, $sql);

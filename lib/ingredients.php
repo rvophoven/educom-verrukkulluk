@@ -23,7 +23,7 @@ class ingredient {
 
       while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { 
       $artikel_id = $row['artikel_id'];
-      $data2 = $this->fetchArtikel($artikel_id);
+      $data2 = $this->fetchArtikel($artikel_id);//can also place row[artikel_id]
       $data[] = array_merge($row,$data2);
       }
 

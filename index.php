@@ -1,5 +1,8 @@
-<!-- some test code.............................................
+<!-- some test code.............................................--> 
 <?php
+
+
+
 // get lib classes
 require_once("lib/database.php");
 require_once("lib/artikel.php");
@@ -84,6 +87,10 @@ var_dump($data);
 echo "<pre>";
 //get review
 $data = $dish->selectRemarks($dish_id);
+var_dump($data);
+echo "<pre>";
+//get dish
+$data = $dish->selectDish($dish_id);
 var_dump($data);
 echo "<pre>";
 

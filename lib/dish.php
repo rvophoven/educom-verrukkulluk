@@ -34,10 +34,11 @@ class dish{
 
   public function fetchKitchentype($artikel_id,$record_type){
     $data = $this->kitchentype->selectKitchentype($artikel_id,$record_type);
+    $data = $data['description'];
     return($data);
   }
 
-  public function selectDish($dish_id){
+  public function fetchDish($dish_id){
       $sql = "SELECT *  FROM dish WHERE id = $dish_id";
       $result = mysqli_query($this->connection, $sql);
       $data =mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -46,7 +47,7 @@ class dish{
 
   public function selectUser($dish_id){
       //get user id dish
-      $data = $this->selectdish($dish_id);
+      $data = $this->fetchDish($dish_id);
       //get user name
       $user_id = $data['users_id'];
       $data = $this->fetchUser($user_id);// can also use $data['users_id']
@@ -58,6 +59,7 @@ class dish{
     return($data);   
   }
 // dish functions/methods.................................................
+  //calc calories dish from database
   public function calcCalories($dish_id){
     $totcalorie =0;
     $data = $this->fetchIngredient($dish_id);
@@ -76,7 +78,7 @@ class dish{
     */
     return($totcalorie);
   }
-
+  //calc price dish calculation from database
   public function calcPrice($dish_id){
     $totprice =0;
     $data = $this->fetchIngredient($dish_id);
@@ -88,7 +90,7 @@ class dish{
     }
     return($totprice);
   }
-
+  //get avarage dish rating from database
   public function selectRating($dish_id){
     $data = [];
     $rating = 0;
@@ -100,7 +102,7 @@ class dish{
     $rating = $rating/count($data);
     return($rating);
   }
-
+  //get dish steps from database
   public function selectSteps($dish_id){
     $data = [];
     $data2 = [];
@@ -113,7 +115,7 @@ class dish{
     return($data2);
     
   }
-
+  // get all dish remarks from database
   public function selectRemarks($dish_id){
     $data = [];
     $data2 = [];
@@ -124,6 +126,29 @@ class dish{
       $data2[$key]['remark'] = $value['textfield'];
     }
     return($data2);
+  }
+  // get compleet dish from database and send compleet back
+  public function selectDish($dish_id){
+
+    $data2=[];
+
+    $data = $this->fetchDish($dish_id);
+    $data['user_name'] = $this->selectUser($dish_id);
+    $data['kitchen'] = $this->fetchKitchentype($data['kitchen_id'],"k");
+    $data['type'] = $this->fetchKitchentype($data['type_id'],"t");
+    $data['calories'] = $this->calcCalories($dish_id);
+    $data['price'] = $this->calcPrice($dish_id);
+    $data['rating'] = $this->selectRating($dish_id);
+    $ingredient = $this->fetchIngredient($dish_id);
+    $remarks = $this->selectRemarks($dish_id);
+    $steps = $this->selectSteps($dish_id);
+
+    $data2[0] = $data;
+    $data2[1] = $ingredient;
+    $data2[2] = $remarks;
+    $data2[3] = $steps;
+    return($data2);
+
   }
 
 }
