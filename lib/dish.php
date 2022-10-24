@@ -1,4 +1,13 @@
 <?php
+require_once("lib/database.php");
+require_once("lib/artikel.php");
+require_once("lib/user.php");
+require_once("lib/kitchentype.php");
+require_once("lib/dishinfo.php");
+require_once("lib/ingredients.php");
+//require_once("lib/dish.php");
+//require_once("lib/shoplist.php");
+
 
 class dish{
   //set privata variables
@@ -7,6 +16,8 @@ class dish{
   private $users;
   private $dishinfo;
   private $kitchentype;
+
+
   //get new classes......................................................
   public function __construct($connection) {
     $this->connection = $connection;
@@ -148,10 +159,10 @@ class dish{
     $remarks = $this->selectRemarks($dish_id);
     $steps = $this->selectSteps($dish_id);
 
-    $data2[0] = $data;
-    $data2[1] = $ingredient;
-    $data2[2] = $remarks;
-    $data2[3] = $steps;
+    $data2['dish'] = $data;
+    $data2['ingredients'] = $ingredient;
+    $data2['remarks'] = $remarks;
+    $data2['steps'] = $steps;
     return($data2);
 
   }
@@ -164,6 +175,29 @@ class dish{
     return($data);
 
   }
+
+  public function getDishes(){
+    //get dish id's orderd by date
+    $sql = "SELECT id  FROM dish ORDER BY dat_added DESC";
+    $result = mysqli_query($this->connection, $sql);
+    //per id get dish
+    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { 
+      $data[] = $this->selectDish($row['id']);
+      }
+    return($data);
+  }
+
+  public function getDishesID(){
+    //get dish id's orderd by date
+    $sql = "SELECT id  FROM dish ORDER BY dat_added DESC";
+    $result = mysqli_query($this->connection, $sql);
+    // ids dishes
+    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { 
+      $data[] =$row['id'];
+      }
+    return($data);
+  }
+
 
 }
 

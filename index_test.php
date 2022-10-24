@@ -26,7 +26,7 @@ $shoplist = new shoplist($db->getConnection());
 
 // set some test values..........................................
 $user_id = 2;
-$dish_id = 2;
+$dish_id = 1;
 $record_type = "o";
 $kitchen_id = 1;
 $type_id = 3;
@@ -105,6 +105,12 @@ echo "<pre>";
 //echo "<pre>";
 //get dishes
 $data = $shoplist->selectShoplist($dish_ids);
+var_dump($data);
+echo "<pre>";
+echo "<pre>";
+echo "Break................................................";
+echo "<pre>";
+$data = $dish->getDishes();
 var_dump($data);
 echo "<pre>";
 

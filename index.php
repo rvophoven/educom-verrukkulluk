@@ -12,13 +12,15 @@ $twig = new \Twig\Environment($loader, ["debug" => true ]);
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
 /******************************/
+require_once("lib/database.php");
+$db = new database();
 
-
+$gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
 
 /// Next step, iets met je data doen. Ophalen of zo
-require_once("lib/gerecht.php");
-$gerecht = new gerecht();
-$data = $gerecht->selecteerGerecht();
+require_once("lib/dish.php");
+$gerecht = new dish($db->getConnection());
+$data = $gerecht->selectDish($gerecht_id);
 
 
 
@@ -35,14 +37,14 @@ $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 switch($action) {
 
         case "homepage": {
-            $data = $gerecht->selecteerGerecht();
+            $data = $gerecht->selectDish($gerecht_id);
             $template = 'detail.html.twig';
             $title = "homepage";
             break;
         }
 
         case "detail": {
-            $data = $gerecht->selecteerGerecht($gerecht_id);
+            $data = $gerecht->selectDish($gerecht_id);
             $template = 'detail.html.twig';
             $title = "detail pagina";
             break;
