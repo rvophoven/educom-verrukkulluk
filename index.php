@@ -31,7 +31,7 @@ $record_type = "o";
 $kitchen_id = 1;
 $type_id = 3;
 $artikel_id = 2;
-$dish_ids = array(1,2);
+$dish_ids = array(1,2,3);
 
 
 //show data database with function/methode classes................
