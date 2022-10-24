@@ -1,112 +1,58 @@
-<!-- some test code.............................................--> 
 <?php
+//// Allereerst zorgen dat de "Autoloader" uit vendor opgenomen wordt:
+require_once("./vendor/autoload.php");
+
+/// Twig koppelen:
+$loader = new \Twig\Loader\FilesystemLoader("./templates");
+/// VOOR PRODUCTIE:
+/// $twig = new \Twig\Environment($loader), ["cache" => "./cache/cc"]);
+
+/// VOOR DEVELOPMENT:
+$twig = new \Twig\Environment($loader, ["debug" => true ]);
+$twig->addExtension(new \Twig\Extension\DebugExtension());
+
+/******************************/
+
+/// Next step, iets met je data doen. Ophalen of zo
+require_once("lib/gerecht.php");
+$gerecht = new gerecht();
+$data = $gerecht->selecteerGerecht();
 
 
+/*
+URL:
+http://localhost/index.php?gerecht_id=4&action=detail
+*/
 
-// get lib classes
-require_once("lib/database.php");
-require_once("lib/artikel.php");
-require_once("lib/user.php");
-require_once("lib/kitchentype.php");
-require_once("lib/dishinfo.php");
-require_once("lib/ingredients.php");
-require_once("lib/dish.php");
-require_once("lib/shoplist.php");
-
-// connect to database...........................................
-$db = new database();
-$user = new user($db->getConnection());
-$artikel = new artikel($db->getConnection());
-$kitchentype = new kitchentype($db->getConnection());
-$dishinfo = new dishinfo($db->getConnection());
-$ingredient = new ingredient($db->getConnection());
-$dish = new dish($db->getConnection());
-$shoplist = new shoplist($db->getConnection());
+$gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
+$action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 
 
-// set some test values..........................................
-$user_id = 2;
-$dish_id = 2;
-$record_type = "o";
-$kitchen_id = 1;
-$type_id = 3;
-$artikel_id = 2;
-$dish_ids = array(1,2,3);
+switch($action) {
+
+        case "homepage": {
+            $data = $gerecht->selecteerGerecht();
+            $template = 'detail.html.twig';
+            $title = "homepage";
+            break;
+        }
+
+        case "detail": {
+            $data = $gerecht->selecteerGerecht($gerecht_id);
+            $template = 'detail.html.twig';
+            $title = "detail pagina";
+            break;
+        }
+
+        /// etc
+
+}
 
 
-//show data database with function/methode classes................
-//get artikel
-$data = $artikel->selectArtikel($artikel_id);
-var_dump($data);
-echo "<pre>";
-//get user
-$data = $user->selectUser($user_id);
-var_dump($data);
-echo "<pre>";
-//get kitchen
-$data = $kitchentype->selectKitchentype($kitchen_id);
-var_dump($data);
-echo "<pre>";
-//get type
-$data = $kitchentype->selectKitchentype($type_id);
-var_dump($data);
-echo "<pre>";
-//get dishinfo w
-$data = $dishinfo->selectDishinfo($dish_id,$record_type);
-var_dump($data);
-echo "<pre>";
-//add favorite
-//$data = $dishinfo->addfavorite($dish_id,$user_id);
-//echo "<pre>";
-//delete favorite
-$data = $dishinfo->deleteFavorite($dish_id,$user_id);
-echo "<pre>";
-//get ingredients
-$data = $ingredient->selectIngredient($dish_id);
-var_dump($data);
-echo "<pre>";
-//get dish user
-$data = $dish->selectUser($dish_id);
-var_dump($data);
-echo "<pre>";
-//get dish ingredients
-$data = $dish->selectIngredient($dish_id);
-var_dump($data);
-echo "<pre>";
-//get callories
-$data = $dish->calcCalories($dish_id);
-var_dump($data);
-echo "<pre>";
-//get callories
-$data = $dish->calcPrice($dish_id);
-var_dump($data);
-echo "<pre>";
-//get waardering
-$data = $dish->selectRating($dish_id);
-var_dump($data);
-echo "<pre>";
-//get preperation
-$data = $dish->selectSteps($dish_id);
-var_dump($data);
-echo "<pre>";
-//get review
-$data = $dish->selectRemarks($dish_id);
-var_dump($data);
-echo "<pre>";
-//get dish
-$data = $dish->selectDish($dish_id);
-var_dump($data);
-echo "<pre>";
-echo "Break................................................";
-echo "<pre>";
-//get dishes
-//$data = $dish->selectDishes($dish_ids);
-//var_dump($data);
-//echo "<pre>";
-//get dishes
-$data = $shoplist->selectShoplist($dish_ids);
-var_dump($data);
-echo "<pre>";
+/// Onderstaande code schrijf je idealiter in een layout klasse of iets dergelijks
+/// Juiste template laden, in dit geval "homepage"
+$template = $twig->load($template);
 
 
-?>
+/// En tonen die handel!
+echo $template->render(["title" => $title, "data" => $data]);
