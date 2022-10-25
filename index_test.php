@@ -26,12 +26,12 @@ $shoplist = new shoplist($db->getConnection());
 
 // set some test values..........................................
 $user_id = 2;
-$dish_id = 1;
+$dish_id = 0;
 $record_type = "o";
 $kitchen_id = 1;
 $type_id = 3;
 $artikel_id = 2;
-$dish_ids = array(1,2,3);
+$dish_ids = array(0);
 
 
 //show data database with function/methode classes................
@@ -93,22 +93,26 @@ echo "<pre>";
 $data = $dish->selectRemarks($dish_id);
 var_dump($data);
 echo "<pre>";
+echo "Break.....selectDish...........................................";
+echo "<pre>";
 //get dish
 $data = $dish->selectDish($dish_id);
 var_dump($data);
 echo "<pre>";
-echo "Break................................................";
+echo "Break.......selectDishes........................................";
 echo "<pre>";
 //get dishes
-//$data = $dish->selectDishes($dish_ids);
-//var_dump($data);
-//echo "<pre>";
+$data = $dish->selectDishes($dish_ids);
+var_dump($data);
+echo "<pre>";
+echo "Break.......selectList.........................................";
+echo "<pre>";
 //get dishes
 $data = $shoplist->selectShoplist($dish_ids);
 var_dump($data);
 echo "<pre>";
 echo "<pre>";
-echo "Break................................................";
+echo "Break..........getDishes......................................";
 echo "<pre>";
 $data = $dish->getDishes();
 var_dump($data);

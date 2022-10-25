@@ -1,5 +1,5 @@
 <?php
-require_once("lib/database.php");
+require_once("lib/database.php");// testing some code
 require_once("lib/artikel.php");
 require_once("lib/user.php");
 require_once("lib/kitchentype.php");
@@ -50,7 +50,10 @@ class dish{
   }
 
   public function fetchDish($dish_id){
-      $sql = "SELECT *  FROM dish WHERE id = $dish_id";
+    $sql = "select * from dish";// if 0 get first dish
+    if($dish_id > 0) {// if >0 get dish_id
+      $sql .= " where id = $dish_id";
+    }
       $result = mysqli_query($this->connection, $sql);
       $data =mysqli_fetch_array($result, MYSQLI_ASSOC);
       return($data);
@@ -114,7 +117,8 @@ class dish{
     foreach($data as $value){
       $rating += $value['numberfield'];
     }
-    $rating = $rating/count($data);
+    if($dish_id>0){$rating = $rating/count($data);}
+    
     return($rating);
   }
   //get dish steps from database
@@ -149,6 +153,7 @@ class dish{
     $data2=[];
 
     $data = $this->fetchDish($dish_id);
+    $dish_id=$data['id'];
     $data['user_name'] = $this->selectUser($dish_id);
     $data['kitchen'] = $this->fetchKitchentype($data['kitchen_id'],"k");
     $data['type'] = $this->fetchKitchentype($data['type_id'],"t");
@@ -166,7 +171,7 @@ class dish{
     return($data2);
 
   }
-  // list of dishes
+  //get list of dishes
   public function selectDishes($dish_ids){
 
     foreach($dish_ids as $value){
@@ -175,7 +180,7 @@ class dish{
     return($data);
 
   }
-
+  // get dishes without ids
   public function getDishes(){
     //get dish id's orderd by date
     $sql = "SELECT id  FROM dish ORDER BY dat_added DESC";
