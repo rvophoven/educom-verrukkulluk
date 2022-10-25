@@ -18,6 +18,7 @@ $db = new database();
 
 /// Next step, iets met je data doen. Ophalen of zo
 require_once("lib/dish.php");
+require_once("lib/shoplist.php");
 $dish = new dish($db->getConnection());
 $list = new shoplist($db->getConnection());
 $data = $dish->getDishes();
