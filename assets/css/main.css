@@ -52,3 +52,28 @@ html, body {
     font-family: "Helvetica Neue", Arial, SansSerif;
     font-size: 16px;
 }
+
+.homepagehead {
+
+    background-color: blue;
+}
+
+.detailpagehead {
+    background-color: blue;
+}
+
+.shoppagehead {
+    background-color: blue;
+}
+
+.agenda {
+    background-color: red;
+}
+
+.footer {
+    background-color: green;
+}
+
+.dishes {
+    background-color: yellow;
+}
