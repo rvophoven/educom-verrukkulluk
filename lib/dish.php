@@ -165,9 +165,9 @@ class dish{
     $steps = $this->selectSteps($dish_id);
 
     $data2['dish'] = $data;
-    $data2['ingredients'] = $ingredient;
-    $data2['remarks'] = $remarks;
-    $data2['steps'] = $steps;
+    $data2['dish']['ingredients'] = $ingredient;
+    $data2['dish']['remarks'] = $remarks;
+    $data2['dish']['steps'] = $steps;
     return($data2);
 
   }
