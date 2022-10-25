@@ -19,7 +19,9 @@ $db = new database();
 /// Next step, iets met je data doen. Ophalen of zo
 require_once("lib/dish.php");
 $dish = new dish($db->getConnection());
+$list = new shoplist($db->getConnection());
 $data = $dish->getDishes();
+$dish_ids = $dish->getDishesID();
 
 
 
@@ -49,16 +51,17 @@ switch($action) {
             break;
         }
 
-        case "detail": {
+        case "shoplist": {
             $data = $dish->getDishes();
             $template = 'detail.html.twig';
-            $title = "detail pagina";
+            $title = "shoplist pagina";
             break;
         }
 
         /// etc
 
 }
+/*page 1: id 1e,2e,3e,4e- page 2: id 5e,6e,7e,8e.... */
 
 
 /// Onderstaande code schrijf je idealiter in een layout klasse of iets dergelijks
