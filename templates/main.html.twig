@@ -18,37 +18,42 @@
 <body>
 <div class="container-fluid">
 
-        <div class="row">
-                
+       
+        {#........header.............................................................................#}      
         {% block header %}
             
         {% endblock %}   
-        </div>
+        
     
 
     <div class="row">
-        
+        {#.......mid left..............................................................................#}
         <div class="col-md-3 row-eq-height">
             
             <div class="container">
             <div class="row p-3">
-               <div class="border agenda" >
-                <h2>Agenda</h2>
-                <i class="fa fa-calendar" style"background-color: #FFF;"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
-                <i class="fa fa-file-pdf"></i><a href="https://www.layoutit.com/build">Layout-it</a>
+               <div class="border agenda shadow" >
+                <h1>Agenda</h1>
+                {% for i in 0..6 %}
+                <i class="far fa-calendar-alt" style="font-size: 40px;"> </i>
+                <i style="font-size: 40px;font-family: pretty_lilyregular;">Vegan koken</i> <br>
+                <i style="font-size: 14px;"> Een Workshop veganistisch koken met melk, onder leiding van Tim broekmans.</i><br><br>
+                {% endfor %}
+                
+                
                 </div>
             </div>
-
+        {#.......mid left..............................................................................#}
             <div class="row p-3">
-                <div class="container border login">
-                <img src="assets/img/verrukkulluk-login.png" style="hight:100px;width:150px;"/>
+                <div class="container border login shadow">
+                <img src="assets/img/verrukkulluk-login.png" style="hight:100px;width:150px;top:20%;"class="center"/>
 
                 <form>
-                    <label>Email:</label><br>
+                    <label class="logintext">Email:</label><br>
                     <input type="text" id="email" name="email"><br>
-                    <label>Password</label><br>
-                    <input type="text" id="password" name="password"><br>
-                    <input type="button" name="loginbutton" value="Login">
+                    <label class="logintext">Password</label><br>
+                    <input type="text" id="password" name="password"><br><br>
+                    <input type="button" name="loginbutton" value="Login" class="loginbutton center">
                 </form>
                 </div>
             </div>
@@ -56,7 +61,7 @@
             
         </div>
         
-
+        {#......mid right...............................................................................#}
         <div class="col-md-9 row-eq-height">
             {%  block content %}
 
@@ -65,20 +70,19 @@
         </div>
     </div>
 
-
+        {#......footer...............................................................................#}
     <div class="row footer">
         
          
         <div class="col-md-2">
-        <img src="assets/img/verrukkulluk-pay-off.png"class="img-fluid" alt="Responsive image"/>
+        <img src="assets/img/verrukkulluk-pay-off.png"style=" width:100px; top:35%;" class="center"/>
         </div>
         <div class="col-md-2">
-        <img src="assets/img/verrukkulluk-contact.png"class="img-fluid" alt="Responsive image"/>
+        <img src="assets/img/verrukkulluk-contact.png"style=" width:150px "/>
 
            <i>Verrukkulluk.nl </i>
-           <i>Poststraat 2b </i>
-           <i>Sittard </i>
-           <i>info@verrukkulluk.nl </i>
+           <i>Poststraat 2b Sittard</i>
+           <i>info@verrukkulluk.nl </i><br><br>
         </div>
         
     </div>

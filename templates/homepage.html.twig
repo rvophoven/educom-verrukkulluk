@@ -2,20 +2,14 @@
 {% extends "main.html.twig" %}
 
 {% block header %}
-<div class="col-md-12">
-                
-                    <a class="btn btn-primary" href="#navigation-main" aria-label="Skip to main navigation">
-                    <i class="fa fa-bars" aria-hidden="true"></i>
-                    </a>
-                    <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
-                    <input class="form-control" type="password" placeholder="search">
-                    </div>
-                
-                
-
-   <img src="assets/img/logo-v2.png" style=" width:400px "/>
-
+<div class="row">
+<div class="col-md-12 " style="background-image: url('assets/img/food.jpg');">
+ <div class="topnav">
+             <input type="text" placeholder="Search..">
+               <a href="#placehold">Placehold</a>
+        </div>
+         <img src="assets/img/logo-v2.png" style=" width:400px "/> 
+</div>
 </div>
 {% endblock %}
 
@@ -27,19 +21,19 @@
 <div class="row">
     {% for record in data %}
      <div class="col-md-6 p-3 row-eq-height">
-     <div class="border dishes">
+     <div class="border dishes shadow" >
         
         
             <img src="assets/img/{{ record.dish.picture }}" class="img-fluid imgfood" alt="Responsive image" style=" width:100% ">
 
-            <h2>{{ record.dish.title }} </h2>   
+            <h2 style="color:var(--darker-green);">{{ record.dish.title }} </h2>   
             <h2>{{ record.dish.rating }}</h2>
             
             
 
             <p>{{ record.dish.short_description }}</p><br>
             <p>
-            <input type="button" name="dishbutton" value="Smullen!">
+            <input type="button" name="dishbutton" value="Smullen!" class="smulbutton">
             {{ record.dish.calories }}
             {{ record.dish.price }}
             </p>
@@ -70,10 +64,6 @@
     <h4>Dit is de template {{  title }}</h4>
     </div>
     </div>#}
-
-
-
-
 
 
 {# Loop 

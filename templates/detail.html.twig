@@ -2,10 +2,13 @@
 {% extends "main.html.twig" %}
 
 {% block header %}
-<div class="homepagehead">
-
 <div class="row">
-<img src="assets/img/logo-v2.png"/>
+<div class="col-md-12 " style="background-image: url('assets/img/food.jpg');">
+ <div class="topnav">
+             <input type="text" placeholder="Search..">
+               <a href="#placehold">Placehold</a>
+        </div>
+         <img src="assets/img/logo-v2.png" style=" width:400px "/> 
 </div>
 </div>
 {% endblock %}
@@ -15,51 +18,26 @@
 {% block content %}
     {# Dit is commentaar #}
 
-     
-        
-    <div class="row">
-    <div class="col-6">
-    {# Print #}
-    <h1>Heading #1</h1>
-    <h2>Heading #2</h2>
-    <h3>Heading #3 t/m 5</h3>
-
-    <h4>Dit is de template {{  title }}</h4>
-    </div>
-    </div>
-
-
 <div class="row">
-    {% for record in data %}
-     <div class="col-6 dishes">
-        <ul>
-            <img src="assets/img/{{ record.dish.picture }}" style="width: 100px; heigfht: 100px;">
 
-            {{ record.dish.title }}
-            
-            <ul>
-                {% for ingr in record.dish.ingredients %}
-                    <li>
-                        <span {% if ingr.id < 2 %}style='color: #F00'{% endif %}>{{  ingr.name }}</span>
+     <div class="col-md-12 p-3 row-eq-heightw">
+     <div class="border dishes shadow" >
+    
+         <img src="assets/img/{{ data[0].dish.picture }}" class="img-fluid imgfood" alt="Responsive image" style=" width:100% ">
 
-                        
-                        {%  if ingr.id == 3 %}
-                            <strong>Dit is ID 3!</strong>
-                        {%  endif  %}
-                    </li>
-                {% endfor %}
-                
-                 
-            </ul>
-            
-            </li> 
-            <strong>{{ record.dish.short_description }}</strong>
-
-        <ul> 
     </div>
-    {% endfor %}
-  
+    </div>
+
+    <div class="col-md-12 p-3 row-eq-heightw">
+     <div class="border dishes shadow" >
+        
+        <img src="assets/img/{{ data[1].dish.picture }}" class="img-fluid imgfood" alt="Responsive image" style=" width:100% ">
+        
+    </div>
+    </div>
+
 </div>
+
 
  
 {% endblock %}

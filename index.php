@@ -21,7 +21,7 @@ require_once("lib/dish.php");
 require_once("lib/shoplist.php");
 $dish = new dish($db->getConnection());
 $list = new shoplist($db->getConnection());
-$data = $dish->getDishes();
+$data = $dish->selectDishes();
 $dish_ids = $dish->getDishesID();
 
 
