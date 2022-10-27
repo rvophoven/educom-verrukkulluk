@@ -53,6 +53,10 @@ html, body {
     font-size: 16px;
 }
 
+.shadow{
+    box-shadow: 4px 10px 4px 10px #9999;
+}
+
 .homepagehead {
 
     background-color: blue;
@@ -71,13 +75,15 @@ html, body {
     text-align: center;
 }
 
-.piccenter{
+.center{
    
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
+    margin: 0;
+    position: relative;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
+
 
 .login{
     background-color: var(--darker-red);
@@ -107,10 +113,54 @@ input[type=text]{
     display: -ms-flexbox;
     display:         flex;
     
+    
   }
 
-i{
-    font-family: "Helvetica Neue", Arial, SansSerif;
-    font-size: 16px;
+
+
+.smulbutton{
+    background-color: var(--lighter-red);
+    width: 150px;
+    height: 60px;
+    font-family: pretty_lilyregular;
+    font-size: 30px;
+    color: #FFF;
+    border-radius: 30px;
+    border-width: 0px;
 }
 
+.loginbutton{
+    background-color: var(--lighter-orange);
+    width: 140px;
+    height: 40px;
+    font-family: pretty_lilyregular;
+    font-size: 28px;
+    color: #FFF;
+    border-radius: 10px;
+    border-width: 0px;
+}
+
+.logintext{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #FFF;
+}
+
+.topnav {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    float: right;
+  }
+
+  .row-eq-heightw {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+    width: 81.25%
+    
+  }
