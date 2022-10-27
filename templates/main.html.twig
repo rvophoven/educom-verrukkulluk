@@ -16,51 +16,48 @@
 
 </html>
 <body>
-        <div class="container-fluid">
+<div class="container-fluid">
 
-            <div class="row">
-                <div class="col-md-12">
-                <div class="row">
-                <ul class="nav">{# top menu #}
-                    <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Who are we</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Products</a>
-                    </li>
-                    <li class="nav-item dropdown ml-md-auto">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Dropdown link</a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider">
-                        </div> <a class="dropdown-item" href="#">Separated link</a>
-                    </div>
-                    </li>
-                </ul>
-        </div>
+        <div class="row">
+                
         {% block header %}
             
         {% endblock %}   
         </div>
-    </div>
+    
 
     <div class="row">
-        <div class="col-md-3 agenda">
-           <div class="row">
-            <h2>Agenda</h2>
-            <i class="fa fa-calendar"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
-            <i class="fa fa-file-pdf"></i><a href="https://www.layoutit.com/build">Layout-it</a>
+        
+        <div class="col-md-3 row-eq-height">
+            
+            <div class="container">
+            <div class="row p-3">
+               <div class="border agenda" >
+                <h2>Agenda</h2>
+                <i class="fa fa-calendar" style"background-color: #FFF;"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
+                <i class="fa fa-file-pdf"></i><a href="https://www.layoutit.com/build">Layout-it</a>
+                </div>
             </div>
-            <div class="row" style="position: relative; top: 50%;">
-             <img src="assets/img/verrukkulluk-login.png"style="width: 150px; heigfht: 100px;"/>
-             
+
+            <div class="row p-3">
+                <div class="container border login">
+                <img src="assets/img/verrukkulluk-login.png" style="hight:100px;width:150px;"/>
+
+                <form>
+                    <label>Email:</label><br>
+                    <input type="text" id="email" name="email"><br>
+                    <label>Password</label><br>
+                    <input type="text" id="password" name="password"><br>
+                    <input type="button" name="loginbutton" value="Login">
+                </form>
+                </div>
             </div>
+            </div>
+            
         </div>
-        <div class="col-md-9">
-            <h2>Content</h2>
+        
+
+        <div class="col-md-9 row-eq-height">
             {%  block content %}
 
 
@@ -73,15 +70,15 @@
         
          
         <div class="col-md-2">
-        <img src="assets/img/verrukkulluk-pay-off.png"style="width: 100px; heigfht: 100px;"/>
+        <img src="assets/img/verrukkulluk-pay-off.png"class="img-fluid" alt="Responsive image"/>
         </div>
-        <div class="col-md-10">
-        <img src="assets/img/verrukkulluk-contact.png"style="width: 100px; heigfht: 100px;"/>
+        <div class="col-md-2">
+        <img src="assets/img/verrukkulluk-contact.png"class="img-fluid" alt="Responsive image"/>
 
-           <p>Verrukkulluk.nl </p>
-           <p>Poststraat 2b </p>
-           <p>Sittard </p>
-           <p>info@verrukkulluk.nl </p>
+           <i>Verrukkulluk.nl </i>
+           <i>Poststraat 2b </i>
+           <i>Sittard </i>
+           <i>info@verrukkulluk.nl </i>
         </div>
         
     </div>

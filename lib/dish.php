@@ -147,8 +147,8 @@ class dish{
     return($data2);
   }
 
-  // get compleet dish from database and send compleet back
-  public function selectDish($dish_id){
+  // get dish from database and send back with extra info
+  public function selectDish($dish_id =0){
 
     $data2=[];
 
@@ -171,8 +171,12 @@ class dish{
     return($data2);
 
   }
-  //get list of dishes
-  public function selectDishes($dish_ids){
+  //get list of dishes with info
+  public function selectDishes($dish_ids =0){
+
+    if(!$dish_ids>0){// if no id get all dishes in order of date
+      $dish_ids = $this->getDishesID();
+    }
 
     foreach($dish_ids as $value){
       $data[] = $this->selectDish($value);

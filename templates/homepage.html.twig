@@ -2,11 +2,20 @@
 {% extends "main.html.twig" %}
 
 {% block header %}
-<div class="homepagehead">
+<div class="col-md-12">
+                
+                    <a class="btn btn-primary" href="#navigation-main" aria-label="Skip to main navigation">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                    </a>
+                    <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
+                    <input class="form-control" type="password" placeholder="search">
+                    </div>
+                
+                
 
-<div class="row">
-<img src="assets/img/logo-v2.png"style="width: 300px; heigfht: 100px;"/>
-</div>
+   <img src="assets/img/logo-v2.png" style=" width:400px "/>
+
 </div>
 {% endblock %}
 
@@ -15,51 +24,33 @@
 {% block content %}
     {# Dit is commentaar #}
 
-     
-        
-    <div class="row">
-    <div class="col-6">
-    {# Print #}
-    <h1>Heading #1</h1>
-    <h2>Heading #2</h2>
-    <h3>Heading #3 t/m 5</h3>
-
-    <h4>Dit is de template {{  title }}</h4>
-    </div>
-    </div>
-
-
 <div class="row">
     {% for record in data %}
-     <div class="col-6 dishes">
-        <ul>
-            <img src="assets/img/{{ record.dish.picture }}" style="width: 100px; heigfht: 100px;">
+     <div class="col-md-6 p-3 row-eq-height">
+     <div class="border dishes">
+        
+        
+            <img src="assets/img/{{ record.dish.picture }}" class="img-fluid imgfood" alt="Responsive image" style=" width:100% ">
 
-            {{ record.dish.title }}
+            <h2>{{ record.dish.title }} </h2>   
+            <h2>{{ record.dish.rating }}</h2>
             
-            <ul>
-                {% for ingr in record.dish.ingredients %}
-                    <li>
-                        <span {% if ingr.id < 2 %}style='color: #F00'{% endif %}>{{  ingr.name }}</span>
-
-                        
-                        {%  if ingr.id == 3 %}
-                            <strong>Dit is ID 3!</strong>
-                        {%  endif  %}
-                    </li>
-                {% endfor %}
-                
-                 
-            </ul>
             
-            </li> 
-            <strong>{{ record.dish.short_description }}</strong>
 
-        <ul> 
+            <p>{{ record.dish.short_description }}</p><br>
+            <p>
+            <input type="button" name="dishbutton" value="Smullen!">
+            {{ record.dish.calories }}
+            {{ record.dish.price }}
+            </p>
+
+        
+    </div>
     </div>
     {% endfor %}
   
 </div>
+
 
  
 {% endblock %}
@@ -68,8 +59,17 @@
 
 
 
+{#
+  <div class="row">
+    <div class="col-6">
+     Print 
+    <h1>Heading #1</h1>
+    <h2>Heading #2</h2>
+    <h3>Heading #3 t/m 5</h3>
 
-
+    <h4>Dit is de template {{  title }}</h4>
+    </div>
+    </div>#}
 
 
 
