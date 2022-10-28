@@ -25,13 +25,24 @@
     
          <img src="assets/img/{{ data[0].dish.picture }}" class="img-fluid imgfood" alt="Responsive image" style=" width:100% ">
 
+            <h2 style="color:var(--darker-green);">{{ data[0].dish.title }} </h2>   
+            <h2>{{ data[0].dish.rating }}</h2>
+            
+            
+
+            <p>{{ data[0].dish.short_description }}</p><br>
+            <p>
+            <i class="fas fa-user-friends" style="color:red;"></i> 4
+            <i class="fa fa-fire" style="color:red;"></i> {{ data[0].dish.calories }}
+            <i style="color:red; font-size:18px; font-family:Arial, Helvetica, sans-serif; font-weight: bold;">&#x20AC </i>{{ (data[0].dish.price/100) |number_format(2, '.', ',') }}
+            </p>
     </div>
     </div>
 
     <div class="col-md-12 p-3 row-eq-heightw">
      <div class="border dishes shadow" >
         
-        <img src="assets/img/{{ data[1].dish.picture }}" class="img-fluid imgfood" alt="Responsive image" style=" width:100% ">
+        <img src="assets/img/{{ data[0].dish.picture }}" class="img-fluid imgfood" alt="Responsive image" style=" width:100% ">
         
     </div>
     </div>

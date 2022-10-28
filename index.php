@@ -32,21 +32,21 @@ http://localhost/index.php?gerecht_id=4&action=detail
 */
 
 
-$gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
+$gerecht_id[] = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 
 
 switch($action) {
 
         case "homepage": {
-            $data = $dish->getDishes();
+            $data = $dish->selectDishes();
             $template = 'homepage.html.twig';
             $title = "homepage";
             break;
         }
 
         case "detail": {
-            $data = $dish->getDishes();
+            $data = $dish->selectDishes($gerecht_id);
             $template = 'detail.html.twig';
             $title = "detail pagina";
             break;

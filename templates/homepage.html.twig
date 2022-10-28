@@ -33,9 +33,15 @@
 
             <p>{{ record.dish.short_description }}</p><br>
             <p>
-            <input type="button" name="dishbutton" value="Smullen!" class="smulbutton">
-            {{ record.dish.calories }}
-            {{ record.dish.price }}
+            <form action="index.php" method="get">
+            <input type="hidden" name="gerecht_id" value={{record.dish.id}}> 
+            <input type="hidden" name="action" value="detail">
+            <input type="submit" value="Smullen!" class="smulbutton">
+            </form>
+
+            <i class="fas fa-user-friends" style="color:red;"></i> 4
+            <i class="fa fa-fire" style="color:red;"></i> {{ record.dish.calories }}
+            <i style="color:red; font-size:18px; font-family:Arial, Helvetica, sans-serif; font-weight: bold;">&#x20AC </i>{{ (record.dish.price/100) |number_format(2, '.', ',') }}
             </p>
 
         
@@ -44,7 +50,6 @@
     {% endfor %}
   
 </div>
-
 
  
 {% endblock %}
