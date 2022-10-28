@@ -116,6 +116,16 @@ input[type=text]{
     
   }
 
+  .smubutton{
+    background-color: transparent;
+    width: 150px;
+    height: 60px;
+    font-family: pretty_lilyregular;
+    font-size: 30px;
+    color: var(--lighter-red);
+    border-radius: 30px;
+    border-width: 0px;
+}
 
 
 .smulbutton{
@@ -128,6 +138,9 @@ input[type=text]{
     border-radius: 30px;
     border-width: 0px;
 }
+
+
+
 
 .loginbutton{
     background-color: var(--lighter-orange);
@@ -164,3 +177,5 @@ input[type=text]{
     width: 81.25%
     
   }
+
+ 

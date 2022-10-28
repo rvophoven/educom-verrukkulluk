@@ -53,9 +53,23 @@ switch($action) {
         }
 
         case "shoplist": {
-            $data = $dish->getDishes();
-            $template = 'detail.html.twig';
+            $data = $list->selectShoplist($gerecht_id);
+            $template = 'shoplist.html.twig';
             $title = "shoplist pagina";
+            break;
+        }
+
+        case "addlike": {
+            $data = $list->selectShoplist($gerecht_id);
+            $template = 'detail.html.twig';
+            $title = "detail pagina";
+            break;
+        }
+
+        case "dellike": {
+            $data = $list->selectShoplist($gerecht_id);
+            $template = 'detail.html.twig';
+            $title = "detail pagina";
             break;
         }
 
