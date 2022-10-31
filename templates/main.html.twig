@@ -14,6 +14,8 @@
 
     <script type="text/javascript" language="javascript" src="assets/jquery/jquery-3.5.1.js"></script>
     <script type="text/javascript" language="javascript" src="assets/bootstrap/js/bootstrap.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 </html>
 <body>
@@ -29,13 +31,13 @@
 
     <div class="row">
         {#.......mid left..............................................................................#}
-        <div class="col-md-3 row-eq-height">
+        <div class="col-md-4 row-eq-height">
             
             <div class="container">
             <div class="row p-3">
                <div class="border agenda shadow" >
                 <h1>Agenda</h1>
-                {% for i in 0..6 %}
+                {% for i in 0..4 %}
                 <i class="far fa-calendar-alt" style="font-size: 40px;"> </i>
                 <i style="font-size: 40px;font-family: pretty_lilyregular;">Vegan koken</i> <br>
                 <i style="font-size: 14px;"> Een Workshop veganistisch koken met melk, onder leiding van Tim broekmans.</i><br><br>
@@ -63,7 +65,7 @@
         </div>
         
         {#......mid right...............................................................................#}
-        <div class="col-md-9 row-eq-height">
+        <div class="col-md-8 row-eq-height">
             {%  block content %}
 
 

@@ -57,26 +57,24 @@ html, body {
     box-shadow: 4px 10px 4px 10px #9999;
 }
 
-.homepagehead {
-
-    background-color: blue;
-}
-
-.detailpagehead {
-    background-color: blue;
-}
-
-.shoppagehead {
-    background-color: blue;
-}
-
 .agenda {
     background-color: var(--darker-green);
     text-align: center;
 }
 
-.center {
-    
+.login {
+    background-color: var(--darker-red);
+}
+
+.footer {
+    background-color: var(--darker-orange);  
+}
+
+.dishes {
+    background-color: var(--kahki);
+}
+
+.center {   
     margin: 0;
     position: relative;
     left: 50%;
@@ -84,63 +82,66 @@ html, body {
     transform: translate(-50%, -50%);
 }
 
-
-.login {
-    background-color: var(--darker-red);
-}
-.footer {
-    background-color: var(--darker-orange);
-    
-}
-
-.dishes {
-    background-color: var(--kahki);
-
-
+.right {   
+    margin: 0;
+    position: relative;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: inline-block;
 }
 
 input[type=text] {
-    width:200px;
+    width:180px;
   }
 
+.imgfoods {
+    max-height: 250px;
+    
+}
+
 .imgfood {
-    max-height: 200px;
+    max-height: 600px;
 }
 
-.row-eq-height {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display:         flex;   
-}
 
-.smubutton {
+.likebutton {
     background-color: transparent;
-    width: 150px;
-    height: 60px;
     font-family: pretty_lilyregular;
-    font-size: 30px;
+    font-size: 50px;
     color: var(--lighter-red);
-    border-radius: 30px;
-    border-width: 0px;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    left: 60%;
 }
 
 
 .smulbutton {
     background-color: var(--lighter-red);
-    width: 150px;
-    height: 60px;
     font-family: pretty_lilyregular;
-    font-size: 30px;
+    font-size: 40px;
     color: #FFF;
     border-radius: 30px;
-    border-width: 0px;
+    padding: 10px 25px;
+    text-decoration: none;
+    position: relative;
+    left: 5%;
 }
 
 
+.listbutton {
+    background-color: var(--lighter-red);
+    font-family: pretty_lilyregular;
+    font-size: 40px;
+    color: #FFF;
+    border-radius: 30px;
+    padding: 10px 25px;
+    text-decoration: none;
+}
 
 
-.loginbuttonn{
+.loginbutton{
     background-color: var(--lighter-orange);
     width: 140px;
     height: 40px;
@@ -176,4 +177,20 @@ input[type=text] {
     
 }
 
- 
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;   
+}
+
+.center-row {
+align-items: center; 
+display: flex; 
+justify-content: center;
+}
+
+.fading{
+
+    
+}
