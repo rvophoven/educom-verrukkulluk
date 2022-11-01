@@ -35,8 +35,13 @@
             <i style="color:red; font-size:18px; font-family:Arial, Helvetica, sans-serif; font-weight: bold;">&#x20AC </i>{{ (data[0].dish.price/100) |number_format(2, '.', ',') }}
             </p>
             
-                <div class="container">
+                <div class="row">
+                <div class="col-md-6" style="align-items: center; display: flex; justify-content: center;" >
                 <h2 style="color:var(--darker-green);">{{ data[0].dish.title }} </h2>   
+                </div>
+                <div class="col-md-6" style="align-items: center; display: flex; justify-content: center;">
+                <h2>{{ data[0].dish.rating }}</h2>
+                </div>
                 </div> 
             
             <i style="color:var(--darker-green); font-size:30px;font-family: pretty_lilyregular;">Keuken </i>  {{ data[0].dish.kitchen }}
@@ -83,21 +88,43 @@
                 <ul>
                 {% for ingr in data[0].dish.ingredients %}
                     <li>
-                        <span {% if ingr.id < 2 %}style='color: #F00'{% endif %}>{{  ingr.name }}</span>
-
+                        <span>{{  ingr.picture }}</span>
+                        <span>{{  ingr.name }}</span>
+                        <span>{{  ingr.description }}</span>
+                        <span>{{  ingr.amount }} {{  ingr.unit }}</span>
+                        
                                             
-                        {%  if ingr.id == 3 %}
-                            <strong>Dit is ID 3!</strong>
-                        {%  endif  %}
+                        
                     </li>
                 {% endfor %}
                 </ul>
         </div>
         <div class="tab-pane" id="bereidingdwijze" role="tabpanel">
-
+                <ul>
+                {% for ingr in data[0].dish.steps %}
+                    <li>
+                        <span>{{  ingr.number }}</span>
+                        <span>{{  ingr.step }}</span>
+                        
+                                            
+        
+                    </li>
+                {% endfor %}
+                </ul>
         </div>
         <div class="tab-pane" id="opmerkingen" role="tabpanel">
-
+                <ul>
+                {% for ingr in data[0].dish.remarks %}
+                    <li>
+                        <span>{{  ingr.users }}</span>
+                        <span>{{  ingr.picture }}</span>
+                        <span>{{  ingr.remark }}</span>
+                        
+                                            
+                        
+                    </li>
+                {% endfor %}
+                </ul>
         </div>
         </div>
 

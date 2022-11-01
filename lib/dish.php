@@ -33,9 +33,11 @@ class dish{
   }
 
   public function fetchUser($artikel_id){
+    $data2 = [];
     $data = $this->users->selectUser($artikel_id);
-    $data = $data['user_name'];
-    return($data);
+    $data2['user_name'] = $data['user_name'];
+    $data2['picture'] = $data['picture'];
+    return($data2);
   }
 
   public function fetchDishinfo($artikel_id,$record_type){
@@ -65,6 +67,7 @@ class dish{
       //get user name
       $user_id = $data['users_id'];
       $data = $this->fetchUser($user_id);// can also use $data['users_id']
+      $data = $data['user_name'];
       return($data);
   }
 
@@ -141,7 +144,9 @@ class dish{
     $data = $this->fetchDishinfo($dish_id,"o");
     foreach($data as $key =>$value){
       $user_id = $value['users_id'];
-      $data2[$key]['users'] = $this->fetchUser($user_id);
+      $data = $this->fetchUser($user_id);
+      $data2[$key]['users'] = $data['user_name'];
+      $data2[$key]['picture'] = $data['picture'];
       $data2[$key]['remark'] = $value['textfield'];
     }
     return($data2);
