@@ -34,7 +34,10 @@ http://localhost/index.php?gerecht_id=4&action=detail
 
 $gerecht_id[] = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
+$rating[] = isset($_GET["rating"]) ? $_GET["rating"] : "";
 $user_id = 1;
+
+
 
 switch($action) {
 
@@ -70,6 +73,11 @@ switch($action) {
             $data = $list->selectShoplist($gerecht_id);
             $template = 'detail.html.twig';
             $title = "detail pagina";
+            break;
+        }
+
+        case "addRating": {
+            $data = $dish->addStars($gerecht_id,$rating);
             break;
         }
 

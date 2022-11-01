@@ -221,7 +221,20 @@ justify-content: center;
     text-align: center;
 }
 
-.checked-star {
+.home-star {
     color: orange;
-    
+    font-size:18px;
+}
+
+.detail-star {
+    color: orange;
+    font-size:25px;
+}
+
+.detail-star:hover{
+    color: #F00;
+  }
+  
+  .red_ {
+    color: #F00;
   }

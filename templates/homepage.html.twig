@@ -35,7 +35,7 @@
                 <div class="col-md-6" style="align-items: center; display: flex; justify-content: center;">
                               
                 {% for i in 1..5 %}
-                <span class=" {% if i <= record.dish.rating %}fa fa-star checked-star {% elseif record.dish.rating - i == -0.5 %}fa fa-star-half-full checked-star {% else %}fa fa-star {% endif %}" ></span>
+                <span class="home-star fa {% if i <= record.dish.rating %}fa-star{% elseif record.dish.rating - i == -0.5 %}fa-star-half-full{% else %}fa-star-o{% endif %}"></span>
                 {% endfor %}
 
 

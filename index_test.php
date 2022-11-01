@@ -32,6 +32,7 @@ $kitchen_id = 1;
 $type_id = 3;
 $artikel_id = 2;
 $dish_ids = array(1,2);
+$stars = 3;
 
 
 //show data database with function/methode classes................
@@ -51,15 +52,20 @@ echo "<pre>";
 $data = $kitchentype->selectKitchentype($type_id);
 var_dump($data);
 echo "<pre>";
-//get dishinfo w
+//add rating w.................................................................................
+$data = $dish->addStars($dish_id,$stars);
+var_dump( $stars);
+echo "<pre>";
+//get dishinfo w.....................................................................................
 $data = $dishinfo->selectDishinfo($dish_id,$record_type);
 var_dump($data);
 echo "<pre>";
 //add favorite
-//$data = $dishinfo->addfavorite($dish_id,$user_id);
+$data = $dishinfo->addfavorite($dish_id,$user_id);
+var_dump( "add fav");
 //echo "<pre>";
 //delete favorite
-$data = $dishinfo->deleteFavorite($dish_id,$user_id);
+//$data = $dishinfo->deleteFavorite($dish_id,$user_id);
 echo "<pre>";
 //get ingredients
 $data = $ingredient->selectIngredient($dish_id);
