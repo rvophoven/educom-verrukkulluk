@@ -190,7 +190,33 @@ display: flex;
 justify-content: center;
 }
 
-.fading{
-
+.imguser {
+    object-fit: cover; 
+    height:100px;
+    width:100px;
+    border-radius: 50px; 
+    border:4px solid var(--lighter-orange);
     
+}
+
+.text-amount {
+    color:var(--darker-green); 
+    font-family: pretty_lilyregular;
+    font-size: 20px;
+    
+}
+
+.center-start {
+    align-items: center; 
+    display: flex; 
+   
+}
+
+.number-back{
+    height: 70px;
+    width:70px;
+    border-radius: 35px; 
+    background-color: var(--lighter-orange);
+    color: #FFF;
+    text-align: center;
 }
