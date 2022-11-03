@@ -3,7 +3,7 @@
 
 {% block header %}
 <div class="row">
-<div class="col-md-12 " style="background-image: url('assets/img/food.jpg');">
+<div class="col-md-12 " style="background-image: url('assets/img/food.jpg'); object-fit: none; height:400px;">
  <div class="topnav">
              <input type="text" placeholder="Search..">
                <a href="#placehold">Placehold</a>
@@ -18,16 +18,65 @@
 {% block content %}
     {# Dit is commentaar #}
 
-<div class="row">
+<div class="row">{#row1#}
+    
+     <div class="col-md-12 p-3 row-eq-height">
+     <div class="border dishes shadow">
 
-     <div class="col-md-12 p-3 row-eq-heightw">
-     <div class="border dishes shadow" >
-          placeholder...
-   
+     <h1 style="color:var(--darker-green); ">Boodschappen</h1>
+           
+                {% for art in data %}
+                    <div class="row">  {#row2#}     
+                        <div class="col-md-3" style="height:140px;">
+                        &nbsp;
+                        <img src="assets/img/{{  art.picture }}"class="img-fluid" alt="Responsive image" style="object-fit: cover; height:120px;border-radius: 25px; ">
+                        </div>
+                        <div class="col-md-9"> 
+                            <div class="row">{#row3#}
+                            <div class="col-md-6">
+
+                            <h3 style="color:var(--darker-green);">{{  art.name }}</h3>
+                            <span>{{  art.description }}</span><br>  
+                            </div>
+                            <div class="col-md-6"> 
+                            {#buttons#}
+                            <form class="">
+                                <input type="text" id="amount" name="amount" class="text-amount" value="{{((art.total_amount/art.content)|round(0, 'ceil'))}}">
+                                <label class="euro" style=";">&#x20AC</label>
+                                <label class="priceArt">{{ (((art.total_amount/art.content)|round(0, 'ceil'))*art.price/100) |number_format(2, '.', ',') }}</label>
+                                <input type="button" name="loginbutton" value="&#10004;" class="check-button">
+                            </form>
+                            <button class="delete-button"><i class="fa fa-trash-o"></i> </button>
+                            
+                            </div>
+                            </div> {#row3#}
+                        </div>   
+                    </div> {#row2#}  
+                {% endfor %}
+
+                <div class="row">  {#row4#} 
+                    <div class="col-md-7">
+
+                    <h2 style="color:var(--darker-red); ">Totaal</h2>
+
+                    </div>
+                    <div class="col-md-5">
+
+                    {#total#}
+                    <i class="euro" style="font-size:35px">&#x20AC</i>
+                    {% set total = 0 %}
+                    {% for art in data %}
+                        {% set start = (((art.total_amount/art.content)|round(0, 'ceil'))*art.price/100) %}
+                        {% set total = (total + start)|number_format(2, '.', ',') %}
+                    {% endfor %}
+                    <i style="font-size:25px">{{total}}</i>
+
+                    </div>
+                </div>{#row4#} 
     </div>
     </div>
 
-</div>
+</div>{#row1#}
 
 
  
