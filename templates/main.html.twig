@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/fontawesome.css" />
 
     <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/homepage.css" />
+   {# <link rel="stylesheet" type="text/css" href="assets/css/homepage.css" />#}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -18,15 +18,32 @@
     <script type="text/javascript" language="javascript" src="assets/bootstrap/js/bootstrap.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    
 
 
+        <script>{#send star rating data#}
+             //header('Content-Type: application/json; charset=utf-8');
+             $(document).ready(function() {
+                $(".detail-star").click(function() {
+                 const value_ = $(this).attr('data-value')//get star value
+                 const id_ = $(this).attr('data-id')//get dish id
 
-
-
-
-
-
+                /// make stars black
+                $('.detail-star').each((index,elem) =>{
+                    const itemValue = $(elem).attr('data-value')
+                    if(itemValue <= value_){
+                    $(elem).addClass('black_')
+                }
+                })
+                /// send rating to server
+                $.ajax({
+                url: "http://localhost/educom-verrukkulluk/index.php",
+                method: "GET",
+                data: {gerecht_id:id_,action:"addRating",rating:value_}, ///dish id, action , rating value
+                    })
+                                    
+                })
+            })
+        </script>
 
 </html>
 <body>
@@ -43,7 +60,7 @@
     <div class="row">
         {#.......mid left..............................................................................#}
         <div class="col-md-4 row-eq-height">
-            
+            {#soe agenda points#}
             <div class="container">
             <div class="row p-3">
                <div class="border agenda shadow" >
@@ -60,6 +77,7 @@
         {#.......mid left..............................................................................#}
             <div class="row p-3">
                 <div class="container border login shadow">
+                {#make login part#}
                 <img src="assets/img/verrukkulluk-login.png" style="hight:100px;width:150px;top:20%;"class="center"/>
 
                 <form class="">
@@ -87,7 +105,7 @@
         {#......footer...............................................................................#}
     <div class="row footer">
         
-         
+         {#show logo, contract and adress#}
         <div class="col-md-2">
         <img src="assets/img/verrukkulluk-pay-off.png"style=" width:100px; top:35%;" class="center"/>
         </div>

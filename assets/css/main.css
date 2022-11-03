@@ -52,28 +52,28 @@ html, body {
     font-family: "Helvetica Neue", Arial, SansSerif;
     font-size: 16px;
 }
-
+/*shadow columns*/
 .shadow {
     box-shadow: 4px 10px 4px 10px #9999;
 }
-
+/*style agenda*/
 .agenda {
     background-color: var(--darker-green);
     text-align: center;
 }
-
+/*style login*/
 .login {
     background-color: var(--darker-red);
 }
-
+/*background footer*/
 .footer {
     background-color: var(--darker-orange);  
 }
-
+/*background*/
 .dishes {
     background-color: var(--kahki);
 }
-
+/*center text*/
 .center {   
     margin: 0;
     position: relative;
@@ -81,7 +81,7 @@ html, body {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-
+/*right text*/
 .right {   
     margin: 0;
     position: relative;
@@ -90,21 +90,20 @@ html, body {
     transform: translate(-50%, -50%);
     display: inline-block;
 }
-
+/*login text width*/
 input[type=text] {
     width:180px;
   }
-
+/*size image*/
 .imgfoods {
     max-height: 250px;
     
 }
-
+/*size image*/
 .imgfood {
     max-height: 600px;
 }
-
-
+/*style like button*/
 .likebutton {
     background-color: transparent;
     font-family: pretty_lilyregular;
@@ -115,8 +114,7 @@ input[type=text] {
     display: inline-block;
     left: 60%;
 }
-
-
+/*style smull button*/
 .smulbutton {
     background-color: var(--lighter-red);
     font-family: pretty_lilyregular;
@@ -128,8 +126,7 @@ input[type=text] {
     position: relative;
     left: 5%;
 }
-
-
+/*style op lijst button*/
 .listbutton {
     background-color: var(--lighter-red);
     font-family: pretty_lilyregular;
@@ -139,8 +136,7 @@ input[type=text] {
     padding: 10px 25px;
     text-decoration: none;
 }
-
-
+/*style login button*/
 .loginbutton{
     background-color: var(--lighter-orange);
     width: 140px;
@@ -151,13 +147,13 @@ input[type=text] {
     border-radius: 10px;
     border-width: 0px;
 }
-
+/*style login text*/
 .logintext{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     color: #FFF;
 }
-
+/*align and style top navigation*/
 .topnav {
     float: left;
     color: #f2f2f2;
@@ -167,7 +163,7 @@ input[type=text] {
     font-size: 17px;
     float: right;
 }
-
+/*equal row height*/
 .row-eq-heightw {
     display: -webkit-box;
     display: -webkit-flex;
@@ -176,20 +172,20 @@ input[type=text] {
     width: 81.25%
     
 }
-
+/*equal row height*/
 .row-eq-height {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display:         flex;   
 }
-
+/*center row*/
 .center-row {
 align-items: center; 
 display: flex; 
 justify-content: center;
 }
-
+/*style user image*/
 .imguser {
     object-fit: cover; 
     height:100px;
@@ -198,20 +194,20 @@ justify-content: center;
     border:4px solid var(--lighter-orange);
     
 }
-
+/*style amount text*/
 .text-amount {
     color:var(--darker-green); 
     font-family: pretty_lilyregular;
     font-size: 20px;
     
 }
-
+/*align center at start*/
 .center-start {
     align-items: center; 
     display: flex; 
    
 }
-
+/*style nummering steps*/
 .number-back{
     height: 70px;
     width:70px;
@@ -220,21 +216,17 @@ justify-content: center;
     color: #FFF;
     text-align: center;
 }
-
+/*style stars*/
 .home-star {
     color: orange;
     font-size:18px;
 }
-
+/*style stars*/
 .detail-star {
     color: orange;
     font-size:25px;
 }
-
-.detail-star:hover{
-    color: #F00;
-  }
-  
-  .red_ {
-    color: #F00;
-  }
+ /*change star color*/
+.black_ {
+    color: #000;
+}

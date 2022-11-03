@@ -3,6 +3,7 @@
 
 {% block header %}
 <div class="row">
+{#head section with picture, searchbar and links#}
 <div class="col-md-12 " style="height:400px">
 <div style="background-image: url('assets/img/food.jpg'); object-fit: cover; height:100%;">
  <div class="topnav" >
@@ -18,22 +19,22 @@
 
 {# nu de block content op in de main pagina vullen #}
 {% block content %}
-    {# Dit is commentaar #}
+    {# details dishes #}
 <div class="container" style="display:flex;">
 <div class="row">
-    {% for record in data %}
+    {% for record in data %}{# get all dishes#}
      <div class="col-md-6 p-3 row-eq-height" style="min-height: 500px">
      <div class="border dishes shadow" >
         
-        
+            {#get dish image and size to collumn#}
             <img src="assets/img/{{ record.dish.picture }}" class="img-fluid imgfoods" alt="Responsive image" style=" object-fit: cover; width:100%; min-height: 250px">
-
+            {# display title and rating#}
             <div class="row">
                 <div class="col-md-6" style="align-items: center; display: flex; justify-content: center;" >
                 <h2 style="color:var(--darker-green);">{{ record.dish.title }} </h2>   
                 </div>
                 <div class="col-md-6" style="align-items: center; display: flex; justify-content: center;">
-                              
+                {#set 5 stars and fill by average rating#}              
                 {% for i in 1..5 %}
                 <span class="home-star fa {% if i <= record.dish.rating %}fa-star{% elseif record.dish.rating - i == -0.5 %}fa-star-half-full{% else %}fa-star-o{% endif %}"></span>
                 {% endfor %}
@@ -41,13 +42,13 @@
 
                 </div>
             </div>
-
+            {#dish description#}
             <p style="min-height: 100">{{ record.dish.short_description }}</p><br>
             
             <div class="row">
                 <div class="col-md-6" >
-                <a class="smulbutton" href=index.php?gerecht_id={{record.dish.id}}&action=detail>Smullen!</a>
-                </div>
+                <a class="smulbutton" href=index.php?gerecht_id={{record.dish.id}}&action=detail>Smullen!</a>{#button to go to dish detail page#}
+                </div>{# 4 person dinner, calories dish and price#}
                 <div class="col-md-6"style="align-items: center; display: flex; justify-content: center;">  
                     <i class="fas fa-user-friends" style="color:red;"> </i>&nbsp;4&nbsp;
                     <i class="fa fa-fire" style="color:red;"> </i>&nbsp;{{ record.dish.calories }}&nbsp;
@@ -67,7 +68,7 @@
 {% endblock %}
 
 
-
+{#some old code to delete later#}
 
 
 {#

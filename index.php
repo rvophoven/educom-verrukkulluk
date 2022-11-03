@@ -12,11 +12,13 @@ $twig = new \Twig\Environment($loader, ["debug" => true ]);
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
 /******************************/
+/*connect database */
 require_once("lib/database.php");
 $db = new database();
 
 
 /// Next step, iets met je data doen. Ophalen of zo
+/*get classes/functions*/
 require_once("lib/dish.php");
 require_once("lib/shoplist.php");
 $dish = new dish($db->getConnection());
@@ -31,14 +33,13 @@ URL:
 http://localhost/index.php?gerecht_id=4&action=detail
 */
 
-
+/*set/get variables */
 $gerecht_id[] = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
-$rating[] = isset($_GET["rating"]) ? $_GET["rating"] : "";
+$rating = isset($_GET["rating"]) ? $_GET["rating"] : "";
 $user_id = 1;
 
-
-
+/*switch between pages or actions */
 switch($action) {
 
         case "homepage": {
@@ -76,8 +77,10 @@ switch($action) {
             break;
         }
 
-        case "addRating": {
-            $data = $dish->addStars($gerecht_id,$rating);
+        case "addRating": {/*add start rating to database*/
+            $data = $dish->addStars($gerecht_id[0],$rating);
+            $template = 'homepage.html.twig';
+            $title = "homepage";
             break;
         }
 

@@ -2,6 +2,7 @@
 {% extends "main.html.twig" %}
 
 {% block header %}
+{#head section with picture, searchbar and links#}
 <div class="row">
 <div class="col-md-12 " style="background-image: url('assets/img/food.jpg'); object-fit: none; height:400px;">
  <div class="topnav">
@@ -23,81 +24,43 @@
      
      <div class="border dishes shadow" >
      <div class="row" style="min-height: 500px"> 
-     
-        <div class="col-md-6">
+
+        <div class="col-md-6">{#get dish image and fill column#}
          <img src="assets/img/{{ data[0].dish.picture }}"class="img-fluid" alt="Responsive image" style="object-fit: cover; height:100%;">
         </div> 
 
         <div class="col-md-6"> 
-            <p><br>
+            <p><br>{#show 4 person, calories, price#}
             <i class="fas fa-user-friends" style="color:red;"></i> 4
             <i class="fa fa-fire" style="color:red;"></i> {{ data[0].dish.calories }}
             <i style="color:red; font-size:18px; font-family:Arial, Helvetica, sans-serif; font-weight: bold;">&#x20AC </i>{{ (data[0].dish.price/100) |number_format(2, '.', ',') }}
             </p>
             
-                <div class="row">
+                <div class="row">{#title and rating#}
                 <div class="col-md-6" style="align-items: center; display: flex; justify-content: center;" >
                 <h1 style="color:var(--darker-green);">{{ data[0].dish.title }} </h1>   
                 </div>
                 <div class="col-md-6" style="align-items: center; display: flex; justify-content: center;">
-                 {% for i in 1..5 %}
-                <span class="detail-star fa {% if i <= data[0].dish.rating %}fa-star{% elseif data[0].dish.rating - i == -0.5 %}fa-star-half-full{% else %}fa-star-o{% endif %}" data-value="{{i}}"></span>
+                 {% for i in 1..5 %}{#set 5 stars and fill by average rating#} 
+                <span class="detail-star fa {% if i <= data[0].dish.rating %}fa-star{% elseif data[0].dish.rating - i == -0.5 %}fa-star-half-full{% else %}fa-star-o{% endif %}" data-value="{{i}}" data-id="{{ data[0].dish.id }}"></span>
                 {% endfor %}
-
-                     <script>
-                        $(document).ready(function() {
-                            $(".detail-star").click(function() {
-                            const value_ = $(this).attr('data-value')
-
-                            console.log(`Value: ${value_}`)
-
-                            /// clear stars
-                            $('.detail-star').removeClass("red_")
-
-                            /// make stars red
-                            $('.detail-star').each((index,elem) =>{
-                                const itemValue = $(elem).attr('data-value')
-                                if(itemValue <= value_){
-                                $(elem).addClass('red_')
-                            }
-                            })
-                            /// send rating to server
-                            $.ajax({
-                            url: "index.php",
-                            method: "POST",
-                            data: {rating:value_}, /// data value clicked star
-                              success: function(result){
-                                /// successful send
-                                console.log("Value send")
-                                /// display average data send back from server
-                                console.log(result.result)
-                              }
-                             })
-                            
-                            })
-
-                            <href=index.php?gerecht_id={{data[0].dish.id}}&action=addRating&rating=value_>
-                        })
-                    </script>
-
-
-
+               
 
                 </div>
                 </div> 
-            
+            {#show kitchen and type#}
             <i style="color:var(--darker-green); font-size:30px;font-family: pretty_lilyregular;">Keuken </i>  {{ data[0].dish.kitchen }}
             <i style="color:var(--darker-green);font-size:30px;font-family: pretty_lilyregular;">Type</i>  {{ data[0].dish.type }}
            
-            
+            {#dish descriptions#} 
             <p>{{ data[0].dish.short_description }}</p><br>
             <p>{{ data[0].dish.long_description }}</p><br>
             
             <div class="row"> 
-            <div class="col-md-6">
+            <div class="col-md-6">{#shoplist button#}
             <a class="listbutton" href=index.php?gerecht_id={{data[0].dish.id}}&action=shoplist>Op lijst</a>
             </div> 
-            <div class="col-md-6">
+            <div class="col-md-6">{#like button#}
             <a class="likebutton" href=index.php?gerecht_id={{record.dish.id}}&action=detail>&#9825</a>
             </div> 
             </div> 
@@ -126,6 +89,7 @@
 
         <!-- Tab panes -->
         <div class="tab-content ">
+        {#...tab show ingredients......................................................#}
         <div class="tab-pane active" id="ingredienten" role="tabpanel">
                 
                 {% for ingr in data[0].dish.ingredients %}
@@ -144,6 +108,7 @@
                 {% endfor %}
                 
         </div>
+        {#....tab show steps.....................................................#}
         <div class="tab-pane" id="bereidingdwijze" role="tabpanel">
                 
                 {% for steps in data[0].dish.steps %}
@@ -159,6 +124,7 @@
                 {% endfor %}
                 
         </div>
+        {#.....tab remarks....................................................#}
         <div class="tab-pane" id="opmerkingen" role="tabpanel">
                 <br>
                 {% for remark in data[0].dish.remarks %}
@@ -183,7 +149,6 @@
     </div>
 
 </div>
-
 
  
 {% endblock %}
