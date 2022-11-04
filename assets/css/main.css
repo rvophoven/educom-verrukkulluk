@@ -229,6 +229,10 @@ justify-content: center;
     color: #000;
 }
 
+.gold_ {
+    color: orange;
+}
+
 .text-amount{
     width: 50px;
 }

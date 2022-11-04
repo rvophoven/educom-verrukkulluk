@@ -61,7 +61,11 @@
             <a class="listbutton" href=index.php?gerecht_id={{data[0].dish.id}}&action=shoplist>Op lijst</a>
             </div> 
             <div class="col-md-6">{#like button#}
-            <a class="likebutton">&#9825</a>
+            <a id="likebutton"class=
+            {% for like in user.like %} {#look throug all dish like ids #}
+                 {% if like == data[0].dish.id %}"likebutton black_ like-active"{% else %}"likebutton like-deactive "{% endif %}{#if the dish id is in user data make haert black#}
+            {% endfor %}
+            >&#9825</a>
             </div> {#nog koppelen#}
             </div> 
 

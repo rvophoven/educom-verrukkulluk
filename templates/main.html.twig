@@ -60,7 +60,7 @@
                     });
                     $("#total").text(mvar.toFixed(2));
                 });
-                
+
                 // on click delete artikel
                 $(".delete-button").click(function(){
                     const id_ = $(this).attr('art-id');
@@ -72,6 +72,16 @@
                     });
                     $("#total").text(mvar.toFixed(2));
                 });
+
+                $(".like-active").click(function(){
+                    $(".like-active").removeClass("black_ like-active").addClass("like-deactive")
+                });
+
+                $(".like-deactive").click(function(){
+                    $(".like-deactive").removeClass("like-deactive").addClass("like-active black_")  
+                });
+
+
 
             })
 
