@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-md-6" style="align-items: center; display: flex; justify-content: center;">
                  {% for i in 1..5 %}{#set 5 stars and fill by average rating#} 
-                <span class="detail-star fa {% if i <= data[0].dish.rating %}fa-star{% elseif data[0].dish.rating - i == -0.5 %}fa-star-half-full{% else %}fa-star-o{% endif %}" data-value="{{i}}" data-id="{{ data[0].dish.id }}"></span>
+                <span id="stars" class="stars detail-star fa {% if i <= data[0].dish.rating %}fa-star{% elseif data[0].dish.rating - i == -0.5 %}fa-star-half-full{% else %}fa-star-o{% endif %}" data-value="{{i}}" data-id="{{ data[0].dish.id }}"></span>
                 {% endfor %}
                
 

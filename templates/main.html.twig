@@ -24,25 +24,28 @@
              //header('Content-Type: application/json; charset=utf-8');
              $(document).ready(function() {
                 /// on click star send to database and show stars
-                $(".detail-star").click(function() {
+                $(".stars").one("click",function() {
                  const value_ = $(this).attr('data-value')//get star value
                  const id_ = $(this).attr('data-id')//get dish id
 
                 /// make stars black
-                $('.detail-star').each((index,elem) =>{
+                $(".detail-star").each((index,elem) =>{
                     const itemValue = $(elem).attr('data-value')
                     if(itemValue <= value_){
-                    $(elem).addClass('black_')
+                    $(elem).addClass('black_') 
                 }
                 })
+                 
                 /// send rating to server
                 $.ajax({
                 url: "http://localhost/educom-verrukkulluk/index.php",
                 method: "GET",
                 data: {gerecht_id:id_,action:"addRating",rating:value_}, ///dish id, action , rating value
                     })
-                                    
+
+                $(".stars").off("click");// one time click       
                 })
+
                 //on click update price amount and total amount
                 $(".check-button").click(function(){
                     const id_ = $(this).attr('art-id');// get some variables
@@ -57,6 +60,7 @@
                     });
                     $("#total").text(mvar.toFixed(2));
                 });
+                
                 // on click delete artikel
                 $(".delete-button").click(function(){
                     const id_ = $(this).attr('art-id');
