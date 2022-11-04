@@ -63,7 +63,7 @@
             <div class="col-md-6">{#like button#}
             <a id="likebutton"class=
             {% for like in user.like %} {#look throug all dish like ids #}
-                 {% if like == data[0].dish.id %}"likebutton black_ like-active"{% else %}"likebutton like-deactive "{% endif %}{#if the dish id is in user data make haert black#}
+                 {% if like == data[0].dish.id %}"likebutton black_ like-active" liked="1"{% else %}"likebutton like-deactive " liked="0"{% endif %}{#if the dish id is in user data make haert black#}
             {% endfor %}
             >&#9825</a>
             </div> {#nog koppelen#}

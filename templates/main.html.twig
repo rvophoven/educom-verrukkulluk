@@ -73,13 +73,19 @@
                     $("#total").text(mvar.toFixed(2));
                 });
 
-                $(".like-active").click(function(){
-                    $(".like-active").removeClass("black_ like-active").addClass("like-deactive")
+                $(".likebutton").click(function(){// change like on click
+                    const like = $(this).attr("liked");// get state like
+                    if (like == "0"){//like not active set active
+                        $(".likebutton").removeClass("like-deactive").addClass("black_ like-active")
+                        $(this).attr("liked", "1");
+                    }else{//like active then deactivate
+                        $(".likebutton").removeClass("black_ like-active").addClass("like-deactive")
+                        $(this).attr("liked", "0");
+                    }
+
                 });
 
-                $(".like-deactive").click(function(){
-                    $(".like-deactive").removeClass("like-deactive").addClass("like-active black_")  
-                });
+                
 
 
 
