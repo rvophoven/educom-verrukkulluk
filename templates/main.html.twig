@@ -23,6 +23,7 @@
         <script>{#send star rating data#}
              //header('Content-Type: application/json; charset=utf-8');
              $(document).ready(function() {
+                /// on click star send to database and show stars
                 $(".detail-star").click(function() {
                  const value_ = $(this).attr('data-value')//get star value
                  const id_ = $(this).attr('data-id')//get dish id
@@ -42,15 +43,36 @@
                     })
                                     
                 })
+                //on click update price amount and total amount
+                $(".check-button").click(function(){
+                    const id_ = $(this).attr('art-id');// get some variables
+                    const amount = $("#amount"+id_).val();
+                    const cost = $(this).attr('art-price');
+                    
+                    $("#price"+id_).text((amount*cost/100).toFixed(2));//calculate new price and show
+                    
+                    var mvar = 0;//calcuate new total price
+                    $(".priceArt").each(function() {
+                        mvar += parseFloat($(this).text());
+                    });
+                    $("#total").text(mvar.toFixed(2));
+                });
+                // on click delete artikel
+                $(".delete-button").click(function(){
+                    const id_ = $(this).attr('art-id');
+                     $("#row"+id_).remove();// remove artikel row
 
-                $('elementName').on('input',function(e){
-                    
-                    
+                    var mvar = 0;//calcuate new total price
+                    $(".priceArt").each(function() {
+                        mvar += parseFloat($(this).text());
+                    });
+                    $("#total").text(mvar.toFixed(2));
                 });
 
-
-
             })
+
+     
+
         </script>
 
 </html>

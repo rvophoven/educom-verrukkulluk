@@ -26,8 +26,8 @@
      <h1 style="color:var(--darker-green); ">Boodschappen</h1>
            
                 {% for art in data %}
-                    <div class="row">  {#row2#}     
-                        <div class="col-md-3" style="height:140px;">
+                    <div class="row" id="row{{art.id}}">  {#row2#}     
+                        <div class="col-md-3" style="height:140px;" >
                         &nbsp;
                         <img src="assets/img/{{  art.picture }}"class="img-fluid" alt="Responsive image" style="object-fit: cover; height:120px;border-radius: 25px; ">
                         </div>
@@ -41,12 +41,13 @@
                             <div class="col-md-6"> 
                             {#buttons#}
                             <form class="">
-                                <input type="text" id="amount" name="amount" class="text-amount" value="{{((art.total_amount/art.content)|round(0, 'ceil'))}}">
+                                <input type="text" id="amount{{art.id}}" name="amount" class="text-amount" art-id="{{art.id}}" value="{{((art.total_amount/art.content)|round(0, 'ceil'))}}">
                                 <label class="euro" style=";">&#x20AC</label>
-                                <label class="priceArt">{{ (((art.total_amount/art.content)|round(0, 'ceil'))*art.price/100) |number_format(2, '.', ',') }}</label>
-                                <input type="button" name="loginbutton" value="&#10004;" class="check-button">
+                                <label id="price{{art.id}}" class="priceArt">{{ (((art.total_amount/art.content)|round(0, 'ceil'))*art.price/100) |number_format(2, '.', ',') }}</label>
+                                {#<input type="button" name="loginbutton" value="&#10004;" class="check-button">#}
                             </form>
-                            <button class="delete-button"><i class="fa fa-trash-o"></i> </button>
+                            <button class="check-button" id="check-button" art-id="{{art.id}}" art-price="{{art.price}}"><i>&#10004;</i> </button>
+                            <button class="delete-button" art-id="{{art.id}}"><i class="fa fa-trash-o"></i> </button>
                             
                             </div>
                             </div> {#row3#}
@@ -69,7 +70,7 @@
                         {% set start = (((art.total_amount/art.content)|round(0, 'ceil'))*art.price/100) %}
                         {% set total = (total + start)|number_format(2, '.', ',') %}
                     {% endfor %}
-                    <i style="font-size:25px">{{total}}</i>
+                    <i id="total" style="font-size:25px">{{total}}</i>
 
                     </div>
                 </div>{#row4#} 
