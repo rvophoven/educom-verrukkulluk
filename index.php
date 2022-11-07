@@ -37,9 +37,12 @@ http://localhost/index.php?gerecht_id=4&action=detail
 $gerecht_id[] = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 $rating = isset($_GET["rating"]) ? $_GET["rating"] : "";
+$search = isset($_GET["search"]) ? $_GET["search"] : "";
 /*login data*/
 $user["id"] = 1;
 $user["like"]  = $dish->likesUser($user["id"]);
+
+$main = 'main.html.twig';
 
 /*switch between pages or actions */
 switch($action) {
@@ -77,6 +80,11 @@ switch($action) {
 
         case "addRating": {/*add start rating to database*/
             $dish->addStars($gerecht_id[0],$rating);
+            break;
+        }
+
+        case "search": {/*add start rating to database*/
+            
             break;
         }
 

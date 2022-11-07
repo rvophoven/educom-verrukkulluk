@@ -265,3 +265,15 @@ justify-content: center;
     background-color: transparent;
     display: inline;
 }
+
+.search{
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 4px;
+}
+
+.links{
+    font-size: 25px;
+    font-weight: bold;
+    color: #FFF;
+    
+}

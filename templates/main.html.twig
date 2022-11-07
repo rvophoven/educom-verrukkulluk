@@ -97,6 +97,17 @@
                     }
                 });
 
+                $(".search").keyup(function() {
+                const text = $(".search").val(); 
+                $.ajax({
+                        url: "http://localhost/educom-verrukkulluk/index.php",
+                        method: "GET",
+                        data: {search:text,action:"search"}, ///send dish is and action to index
+                    })
+
+                alert(text);
+                });
+
             
             })
         </script>
@@ -108,7 +119,18 @@
        
         {#........header.............................................................................#}      
         {% block header %}
-            
+            <div class="row">
+                {#head section with picture, searchbar and links#}
+                <div class="col-md-12 " style="height:400px">
+                <div style="background-image: url('assets/img/food.jpg'); object-fit: cover; height:100%;">
+                <div class="topnav" >
+                            <input type="text" class="search" placeholder="Search.." data="{{data}}">
+                            <a class="links " href="#placehold">&#9776</a>
+                        </div>
+                        <img src="assets/img/logo-v2.png" style=" width:400px "/> 
+                </div>
+                </div>
+            </div>
         {% endblock %}   
         
     
