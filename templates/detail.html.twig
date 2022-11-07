@@ -23,7 +23,7 @@
 
      
      <div class="border dishes shadow" >
-     <div class="row" style="min-height: 500px"> 
+     <div class="row" style="min-height: 500px;"> 
 
         <div class="col-md-6">{#get dish image and fill column#}
          <img src="assets/img/{{ data[0].dish.picture }}"class="img-fluid" alt="Responsive image" style="object-fit: cover; height:100%;">
@@ -37,10 +37,10 @@
             </p>
             
                 <div class="row">{#title and rating#}
-                <div class="col-md-6" style="align-items: center; display: flex; justify-content: center;" >
+                <div class="col-md-6 center-flex" style="" >
                 <h1 style="color:var(--darker-green);">{{ data[0].dish.title }} </h1>   
                 </div>
-                <div class="col-md-6" style="align-items: center; display: flex; justify-content: center;">
+                <div class="col-md-6 center-flex" style="">
                  {% for i in 1..5 %}{#set 5 stars and fill by average rating#} 
                 <span id="stars" class="stars detail-star fa {% if i <= data[0].dish.rating %}fa-star{% elseif data[0].dish.rating - i == -0.5 %}fa-star-half-full{% else %}fa-star-o{% endif %}" data-value="{{i}}" data-id="{{ data[0].dish.id }}"></span>
                 {% endfor %}
@@ -62,13 +62,14 @@
             </div> 
             <div class="col-md-6">{#like button#}
             <a id="likebutton"class=
-            {% for like in user.like %} {#look throug all dish like ids #}
-                 {% if like == data[0].dish.id %}"likebutton black_ like-active" liked="1"{% else %}"likebutton like-deactive " liked="0"{% endif %}{#if the dish id is in user data make haert black#}
+            {% set break = false %}
+            {% for liked in user.like %} {#look throug all dish like ids #}
+                 {% if (liked == data[0].dish.id) %}"likebutton gold_ like-active" liked="1"{% set break = true %}{% endif %}{#if the dish id is in user data make heart gold#}
             {% endfor %}
-            >&#9825</a>
-            </div> {#nog koppelen#}
+            {% if break == false %}"likebutton like-deactive " liked="0"{% endif %} {#if id not found set heart deactive#}
+            data-id="{{ data[0].dish.id }}">&#9825</a>{#set dish id for search#}
+            </div>
             </div> 
-
         </div> 
     </div>        
     </div>

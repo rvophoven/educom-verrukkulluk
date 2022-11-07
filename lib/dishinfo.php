@@ -24,6 +24,20 @@ class dishinfo {
 
     }
 
+    public function selectLikes($user_id) {// get likes from user
+
+      $sql = "SELECT dish_id  FROM dish_info WHERE users_id = $user_id AND record_type LIKE 'f'";
+        
+      $data = [];
+      $result = mysqli_query($this->connection, $sql);
+
+      while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+      $data[] = $row;   
+      }
+      
+      return($data);
+
+    }
 
     public function addFavorite($dish_id,$user_id){
       $this->deletefavorite($dish_id,$user_id);

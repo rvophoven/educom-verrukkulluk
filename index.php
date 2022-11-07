@@ -38,8 +38,8 @@ $gerecht_id[] = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 $rating = isset($_GET["rating"]) ? $_GET["rating"] : "";
 /*login data*/
-$user["like"]  = array(2, 4);
 $user["id"] = 1;
+$user["like"]  = $dish->likesUser($user["id"]);
 
 /*switch between pages or actions */
 switch($action) {
@@ -65,24 +65,18 @@ switch($action) {
             break;
         }
 
-        case "addlike": {
-            $data = $list->selectShoplist($gerecht_id);
-            $template = 'detail.html.twig';
-            $title = "detail pagina";
+        case "addLike": {
+           $dish->addLike($gerecht_id[0],$user["id"]);
             break;
         }
 
-        case "dellike": {
-            $data = $list->selectShoplist($gerecht_id);
-            $template = 'detail.html.twig';
-            $title = "detail pagina";
+        case "delLike": {
+            $dish->deleteLike($gerecht_id[0],$user["id"]);
             break;
         }
 
         case "addRating": {/*add start rating to database*/
-            $data = $dish->addStars($gerecht_id[0],$rating);
-            $template = 'homepage.html.twig';
-            $title = "homepage";
+            $dish->addStars($gerecht_id[0],$rating);
             break;
         }
 

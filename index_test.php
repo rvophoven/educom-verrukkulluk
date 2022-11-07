@@ -25,7 +25,7 @@ $shoplist = new shoplist($db->getConnection());
 
 
 // set some test values..........................................
-$user_id = 2;
+$user_id = 1;
 $dish_id = 3;
 $record_type = "o";
 $kitchen_id = 1;

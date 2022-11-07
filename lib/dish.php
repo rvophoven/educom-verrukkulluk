@@ -32,16 +32,35 @@ class dish{
     return($data);
   }
 
-  public function fetchUser($artikel_id){
+  public function fetchUser($user_id){// get user name and picture
     $data2 = [];
-    $data = $this->users->selectUser($artikel_id);
+    $data = $this->users->selectUser($user_id);
     $data2['user_name'] = $data['user_name'];
     $data2['picture'] = $data['picture'];
     return($data2);
   }
 
+  public function likesUser($user_id =0){// get likes from user
+    $data2 = [];
+    $data = $this->dishinfo->selectLikes($user_id);
+    foreach($data as $value){
+    $data2[] = $value["dish_id"];
+    }
+    return($data2);
+  }
+
   public function fetchDishinfo($artikel_id,$record_type){
     $data = $this->dishinfo->selectDishinfo($artikel_id,$record_type);
+    return($data);
+  }
+
+  public function deleteLike($dish_id,$user_id){
+    $data = $this->dishinfo->deleteFavorite($dish_id,$user_id);
+    return($data);
+  }
+
+  public function addLike($dish_id,$user_id){
+    $data = $this->dishinfo->addFavorite($dish_id,$user_id);
     return($data);
   }
 

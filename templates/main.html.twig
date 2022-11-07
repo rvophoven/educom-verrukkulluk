@@ -72,27 +72,33 @@
                     });
                     $("#total").text(mvar.toFixed(2));
                 });
-
+                // on click delete or add like
                 $(".likebutton").click(function(){// change like on click
                     const like = $(this).attr("liked");// get state like
+                    const id_ = $(this).attr('data-id')//get dish id
                     if (like == "0"){//like not active set active
-                        $(".likebutton").removeClass("like-deactive").addClass("black_ like-active")
+                        $(".likebutton").removeClass("like-deactive").addClass("gold_ like-active")
                         $(this).attr("liked", "1");
-                    }else{//like active then deactivate
-                        $(".likebutton").removeClass("black_ like-active").addClass("like-deactive")
-                        $(this).attr("liked", "0");
-                    }
+                        $.ajax({
+                        url: "http://localhost/educom-verrukkulluk/index.php",
+                        method: "GET",
+                        data: {gerecht_id:id_,action:"addLike"}, ///send dish is and action to index
+                        })
 
+                    }else{//like active then deactivate
+                        $(".likebutton").removeClass("gold_ like-active").addClass("like-deactive")
+                        $(this).attr("liked", "0");
+                        $.ajax({
+                        url: "http://localhost/educom-verrukkulluk/index.php",
+                        method: "GET",
+                        data: {gerecht_id:id_,action:"delLike"}, ///send dish is and action to index
+                        })
+
+                    }
                 });
 
-                
-
-
-
+            
             })
-
-     
-
         </script>
 
 </html>
@@ -156,10 +162,10 @@
     <div class="row footer">
         
          {#show logo, contract and adress#}
-        <div class="col-md-2">
-        <img src="assets/img/verrukkulluk-pay-off.png"style=" width:100px; top:35%;" class="center"/>
+        <div class="col-md-2" style="height:300px;">
+        <img src="assets/img/verrukkulluk-pay-off.png"style=" width:100px; top:20%;" class="center"/>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2" style="max-width:150px">
         <img src="assets/img/verrukkulluk-contact.png"style=" width:150px "/>
 
            <i>Verrukkulluk.nl </i>

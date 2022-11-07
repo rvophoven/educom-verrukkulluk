@@ -81,6 +81,11 @@ html, body {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+.center-flex{
+    align-items: center; 
+    display: flex; 
+    justify-content: center;
+}
 /*right text*/
 .right {   
     margin: 0;
@@ -230,7 +235,7 @@ justify-content: center;
 }
 
 .gold_ {
-    color: orange;
+    color: var(--lighter-orange);
 }
 
 .text-amount{
