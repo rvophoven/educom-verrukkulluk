@@ -121,14 +121,26 @@
                 {#head section with picture, searchbar and links#}
                 <div class="col-md-12 " style="height:400px">
                 <div style="background-image: url('assets/img/food.jpg'); object-fit: cover; height:100%;">
-                <div class="topnav" >
+                <div class="topnav navbar" >
                             {#<input type="text" class="search" placeholder="Search.." data="{{data}}"> old code#}
                             <form action="index.php" method="GET" style="display: inline;">
                                 <input type="text" name="search" class="search"/>
                                 <input type="hidden" name="action" value="search" />
                                 <input type="submit" value="Go" />
                             </form>
-                            <a class="links" href="index.php" style="display: inline;">&#9776</a>
+                                    
+                                <button class="links" href="index.php" style="display: inline;">&#9776</button>
+                                {#start dropdown#}
+                                <div class="menu">
+                                    <div class="menu-trigger">
+                                        <div class="dropdown">
+                                            <div>
+                                                Menu goes here!
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
                         </div>
                         <img src="assets/img/logo-v2.png" style=" width:400px "/> 
                 </div>
