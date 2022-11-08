@@ -96,6 +96,20 @@ switch($action) {
             break;
         }
 
+        case "shoppage": {
+            $data = $list->selectShoplist($_SESSION['lijst']);//load all dishes added to shoplist
+            $template = 'shoplist.html.twig';
+            $title = "shoplist pagina";
+            break;
+        }
+
+        case "likepage": {
+            $data = $dish->selectDishes($user["like"]);
+            $template = 'homepage.html.twig';
+            $title = "homepage";
+            break;
+        }
+
 
 
         /// etc

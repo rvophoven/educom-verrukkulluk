@@ -279,13 +279,13 @@ justify-content: center;
 }
 /*..start dropdown.................................................*/
 .menu {
-    position: fixed;
+    position: relative;
     top: 20px;
     right: 20px;
 }
 
 .menu-trigger {
-    background-color: #F00;
+    background-color: transparent;
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -302,12 +302,12 @@ justify-content: center;
 }
 
 .dropdown {
-    position: fixed;
-    top: -400px;
+    position: relative;
+    top: -500px;
     left: 0;
     right: 0;
     height: 200px;
-    background-color: #FDF;
+    background-color: #FFF;
     transition: all 0.4s ease;
     padding: 40px;
 }

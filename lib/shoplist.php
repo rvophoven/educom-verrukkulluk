@@ -14,11 +14,16 @@ class shoplist{
     return($data);
   }
 
-  public function selectShoplist($dish_ids){
+  public function selectShoplist($dish_ids =0){
     $data=[];
     $data1=[];
     $data2=[];
     $list=[];
+
+    if(!$dish_ids>0){// if no id get all dishes in order of date
+      $dish_ids =[0];
+    }
+
     foreach($dish_ids as $value){
     $data = $this->fetchIngredient($value);//get per dish the artikels
 
@@ -42,6 +47,7 @@ class shoplist{
             $list[$key]['total_amount']+= $value['amount'];
           }         
     }
+   
     return($list);
 
   }
