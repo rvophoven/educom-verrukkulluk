@@ -1,4 +1,8 @@
 <?php
+session_start();
+//session_destroy();
+
+
 //// Allereerst zorgen dat de "Autoloader" uit vendor opgenomen wordt:
 require_once("./vendor/autoload.php");
 
@@ -40,6 +44,7 @@ $gerecht_id[] = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 $rating = isset($_GET["rating"]) ? $_GET["rating"] : "";
 $searchText = isset($_GET["search"]) ? $_GET["search"] : "";
+$lijst_id = isset($_GET["lijst_id"]) ? $_GET["lijst_id"] : "";
 /*login data*/
 $user["id"] = 1;
 $user["like"]  = $dish->likesUser($user["id"]);
@@ -64,7 +69,8 @@ switch($action) {
         }
 
         case "shoplist": {
-            $data = $list->selectShoplist($gerecht_id);
+            $_SESSION['lijst'][] = $lijst_id;//add dish id to shoplist session variables
+            $data = $list->selectShoplist($_SESSION['lijst']);//load all dishes added to shoplist
             $template = 'shoplist.html.twig';
             $title = "shoplist pagina";
             break;
