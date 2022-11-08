@@ -12,6 +12,7 @@ require_once("lib/dishinfo.php");
 require_once("lib/ingredients.php");
 require_once("lib/dish.php");
 require_once("lib/shoplist.php");
+require_once("lib/search.php");
 
 // connect to database...........................................
 $db = new database();
@@ -22,6 +23,7 @@ $dishinfo = new dishinfo($db->getConnection());
 $ingredient = new ingredient($db->getConnection());
 $dish = new dish($db->getConnection());
 $shoplist = new shoplist($db->getConnection());
+$search = new search($db->getConnection());
 
 
 // set some test values..........................................
@@ -33,8 +35,11 @@ $type_id = 3;
 $artikel_id = 2;
 $dish_ids = array(1,2);
 $stars = 3;
+$search_id = [1,2];
+$searchText = "in";
 
-
+$search_id = $search->getSearch($searchText);
+var_dump($search_id);
 //show data database with function/methode classes................
 //get artikel
 $data = $artikel->selectArtikel($artikel_id);

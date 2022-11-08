@@ -21,10 +21,12 @@ $db = new database();
 /*get classes/functions*/
 require_once("lib/dish.php");
 require_once("lib/shoplist.php");
+require_once("lib/search.php");
 $dish = new dish($db->getConnection());
 $list = new shoplist($db->getConnection());
+$search = new search($db->getConnection());
 $data = $dish->selectDishes();
-$dish_ids = $dish->getDishesID();
+$search_id = [];
 
 
 
@@ -37,7 +39,7 @@ http://localhost/index.php?gerecht_id=4&action=detail
 $gerecht_id[] = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 $rating = isset($_GET["rating"]) ? $_GET["rating"] : "";
-$search = isset($_GET["search"]) ? $_GET["search"] : "";
+$searchText = isset($_GET["search"]) ? $_GET["search"] : "";
 /*login data*/
 $user["id"] = 1;
 $user["like"]  = $dish->likesUser($user["id"]);
@@ -83,8 +85,11 @@ switch($action) {
             break;
         }
 
-        case "search": {/*add start rating to database*/
-            
+        case "search": {
+            $search_id = $search->getSearch($searchText);
+            $data = $dish->selectDishes($search_id);
+            $template = 'homepage.html.twig';
+            $title = "homepage";
             break;
         }
 

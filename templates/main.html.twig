@@ -96,17 +96,15 @@
 
                     }
                 });
-
-                $(".search").keyup(function() {
-                const text = $(".search").val(); 
-                $.ajax({
-                        url: "http://localhost/educom-verrukkulluk/index.php",
-                        method: "GET",
-                        data: {search:text,action:"search"}, ///send dish is and action to index
-                    })
-
-                alert(text);
-                });
+                // old code not in use
+                //$(".search").keyup(function() {
+                //const text = $(".search").val(); 
+               // $.ajax({
+               //         url: "http://localhost/educom-verrukkulluk/index.php",
+                //        method: "GET",
+                //        data: {search:text,action:"search"}, ///send dish is and action to index
+                //    })
+               // });
 
             
             })
@@ -124,8 +122,13 @@
                 <div class="col-md-12 " style="height:400px">
                 <div style="background-image: url('assets/img/food.jpg'); object-fit: cover; height:100%;">
                 <div class="topnav" >
-                            <input type="text" class="search" placeholder="Search.." data="{{data}}">
-                            <a class="links " href="#placehold">&#9776</a>
+                            {#<input type="text" class="search" placeholder="Search.." data="{{data}}"> old code#}
+                            <form action="index.php" method="GET" style="display: inline;">
+                                <input type="text" name="search" class="search"/>
+                                <input type="hidden" name="action" value="search" />
+                                <input type="submit" value="Go" />
+                            </form>
+                            <a class="links" href="#placehold" style="display: inline;">&#9776</a>
                         </div>
                         <img src="assets/img/logo-v2.png" style=" width:400px "/> 
                 </div>
