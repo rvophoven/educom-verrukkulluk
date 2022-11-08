@@ -1,4 +1,5 @@
 <?php
+/* code is not in use anymore but i wil leave it*/
 class search{
 
   private $connection;

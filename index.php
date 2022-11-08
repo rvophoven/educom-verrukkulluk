@@ -25,10 +25,8 @@ $db = new database();
 /*get classes/functions*/
 require_once("lib/dish.php");
 require_once("lib/shoplist.php");
-require_once("lib/search.php");
 $dish = new dish($db->getConnection());
 $list = new shoplist($db->getConnection());
-$search = new search($db->getConnection());
 $data = $dish->selectDishes();
 $search_id = [];
 
@@ -92,14 +90,13 @@ switch($action) {
         }
 
         case "search": {
-            $search_id = $search->getSearch($searchText);
-            $data = $dish->selectDishes($search_id);
+            $data = $dish->getSearch($searchText);
             $template = 'homepage.html.twig';
             $title = "homepage";
             break;
         }
 
-        
+
 
         /// etc
 

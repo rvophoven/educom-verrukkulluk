@@ -231,6 +231,20 @@ class dish{
     return($data);
   }
 
+  public function getSearch($searchText){
+    $dishes = $this->selectDishes();
+    $data = [];
+    
+    foreach($dishes as $dish){
+      $text = json_encode(array_values($dish));//array to json
+      $textNoNum = preg_replace('/[0-9]+/', '', $text);//no number search
+      if(strpos(strtoupper($textNoNum),strtoupper($searchText)) !== false){
+        $data[] = $dish;
+      }
+    }
+    return($data);
+  }
+
 
 }
 
