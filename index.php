@@ -15,6 +15,7 @@ $loader = new \Twig\Loader\FilesystemLoader("./templates");
 $twig = new \Twig\Environment($loader, ["debug" => true ]);
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
+
 /******************************/
 /*connect database */
 require_once("lib/database.php");
@@ -28,9 +29,6 @@ require_once("lib/shoplist.php");
 $dish = new dish($db->getConnection());
 $list = new shoplist($db->getConnection());
 $data = $dish->selectDishes();
-$search_id = [];
-
-
 
 /*
 URL:
@@ -52,21 +50,21 @@ $main = 'main.html.twig';
 /*switch between pages or actions */
 switch($action) {
 
-        case "homepage": {
+        case "homepage": {/*get dishes and show homepage*/
             $data = $dish->selectDishes();
             $template = 'homepage.html.twig';
             $title = "homepage";
             break;
         }
 
-        case "detail": {
+        case "detail": {/*get dish and show detailpage*/
             $data = $dish->selectDishes($gerecht_id);
             $template = 'detail.html.twig';
             $title = "detail pagina";
             break;
         }
 
-        case "shoplist": {
+        case "shoplist": {/*add dish and show shoppage*/
             $_SESSION['lijst'][] = $lijst_id;//add dish id to shoplist session variables
             $data = $list->selectShoplist($_SESSION['lijst']);//load all dishes added to shoplist
             $template = 'shoplist.html.twig';
@@ -74,12 +72,12 @@ switch($action) {
             break;
         }
 
-        case "addLike": {
+        case "addLike": {/*add like to database*/
            $dish->addLike($gerecht_id[0],$user["id"]);
             break;
         }
 
-        case "delLike": {
+        case "delLike": {/*delete like in database*/
             $dish->deleteLike($gerecht_id[0],$user["id"]);
             break;
         }
@@ -89,36 +87,50 @@ switch($action) {
             break;
         }
 
-        case "search": {
+        case "search": {/*get search and show result on homepage*/
             $data = $dish->getSearch($searchText);
             $template = 'homepage.html.twig';
             $title = "homepage";
             break;
         }
 
-        case "shoppage": {
-            $data = $list->selectShoplist($_SESSION['lijst']);//load all dishes added to shoplist
+        case "shoppage": {/* show shoppage*/ 
+            $data = [];                   
+            if(isset($_SESSION['lijst']) && !empty($_SESSION['lijst'])) {//check if shoppage list is empty
+                $data = $list->selectShoplist($_SESSION['lijst']);//load all dishes added to shoplist
+             }
             $template = 'shoplist.html.twig';
             $title = "shoplist pagina";
             break;
         }
 
-        case "likepage": {
+        case "likepage": {/* show liked dishes on homepage*/
             $data = $dish->selectDishes($user["like"]);
             $template = 'homepage.html.twig';
             $title = "homepage";
             break;
         }
 
+        case "login" : {//still need to finish
+            $_SESSION["Login"] = true;
+            $template = 'homepage.html.twig';
+            $title = "homepage";
 
+            break;
+        }
 
-        /// etc
-
+        case "logout" : {//still need to finish
+            session_unset();
+            $_SESSION["Login"] = false;
+            $template = 'homepage.html.twig';
+            $title = "homepage";
+            
+            break;
+        }
 }
-/*page 1: id 1e,2e,3e,4e- page 2: id 5e,6e,7e,8e.... */
 
 
-/// Onderstaande code schrijf je idealiter in een layout klasse of iets dergelijks
+$twig->addGlobal('session', $_SESSION);
 /// Juiste template laden, in dit geval "homepage"
 $template = $twig->load($template);
 
