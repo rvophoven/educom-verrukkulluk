@@ -271,8 +271,17 @@ justify-content: center;
     border-radius: 4px;
 }
 
+.searchbtn{
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFF;
+    border: 0;
+}
+
 .links{
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
     color: #FFF;
     
@@ -280,14 +289,16 @@ justify-content: center;
 /*..start dropdown.................................................*/
 .menu {
     position: relative;
-    top: 20px;
-    right: 20px;
+    top: -8px;
+    margin-left: 10px;
+    background-color: rgba(255,255,255,0.5);
+    height: 34px;
+    width: 38px;
+    border-radius: 4px;
 }
 
 .menu-trigger {
     background-color: transparent;
-    width: 40px;
-    height: 40px;
     cursor: pointer;
     transition: all 0.4s ease;
     z-index: 5000 !important;
@@ -302,12 +313,19 @@ justify-content: center;
 }
 
 .dropdown {
-    position: relative;
-    top: -500px;
+    position: fixed;
+    top: -300px;
     left: 0;
     right: 0;
-    height: 200px;
+    height: 280px;
     background-color: #FFF;
     transition: all 0.4s ease;
     padding: 40px;
+}
+
+.navbtns{
+    font-family: pretty_lilyregular;
+    font-size: 50px;
+    text-decoration: none;
+    color: var(--darker-green);
 }

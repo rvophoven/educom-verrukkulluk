@@ -126,24 +126,20 @@
                             <form action="index.php" method="GET" style="display: inline;">
                                 <input type="text" name="search" class="search"/>
                                 <input type="hidden" name="action" value="search" />
-                                <input type="submit" value="Go" />
+                                <input type="submit" value="Go" class="searchbtn" />
                             </form>
                                     
-                                <button class="links" href="index.php" style="display: inline;">&#9776</button>
-                                {#start dropdown#}
-                                <div class="menu">
-                                    <div class="menu-trigger">
-                                        <div class="dropdown shadow">
-                                            <div>
-                                                Menu goes here!
-                                                <img src="assets/img/logo-v2.png" style=" width:400px ">
-                                                <a class="homepagebtn" href=index.php?action=homepage>Homepage</a>
-                                                <a class="shoppagebtn" href=index.php?action=shoppage>Shop list</a>
-                                                <a class="likepagebtn" href=index.php?action=likepage>Like list</a>
-                                            </div>
-                                        </div>
+                            {#start dropdown#}
+                            <div class="menu" style="display: inline;"><i class="links menu-trigger">&#9776
+                                    <div class="dropdown shadow">
+                                    <div>
+                                    <img src="assets/img/logo-v2.png" style=" width:400px ">
+                                    <a class="homepagebtn navbtns" href=index.php?action=homepage>Homepage -</a>
+                                    <a class="shoppagebtn navbtns" href=index.php?action=shoppage>Shop list -</a>
+                                    <a class="likepagebtn navbtns" href=index.php?action=likepage>Like list</a>
                                     </div>
-                                </div>
+                                </div></i>
+                            </div>
         
                         </div>
                         <img src="assets/img/logo-v2.png" style=" width:400px "/> 
