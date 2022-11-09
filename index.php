@@ -36,6 +36,19 @@ http://localhost/index.php?gerecht_id=4&action=detail
 */
 
 /*set/get variables */
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {/*still need to finish!!!*/
+    /*get email and password*/
+    $password = $_POST["password"];
+    $email = $_POST["email"];
+    /*check email and password*/
+
+    /*correct? login*/
+    $action = $_POST["action"];
+    /*incorrect? error*/
+    
+}
+
 $gerecht_id[] = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 $rating = isset($_GET["rating"]) ? $_GET["rating"] : "";
@@ -45,7 +58,7 @@ $lijst_id = isset($_GET["lijst_id"]) ? $_GET["lijst_id"] : "";
 $user["id"] = 1;
 $user["like"]  = $dish->likesUser($user["id"]);
 
-$main = 'main.html.twig';
+
 
 /*switch between pages or actions */
 switch($action) {

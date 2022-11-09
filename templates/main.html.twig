@@ -20,9 +20,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 
-        <script>{#send star rating data#}
+        <script>
              //header('Content-Type: application/json; charset=utf-8');
              $(document).ready(function() {
+
                 /// on click star send to database and show stars
                 $(".stars").one("click",function() {
                  const value_ = $(this).attr('data-value')//get star value
@@ -117,6 +118,7 @@
        
         {#........header.............................................................................#}      
         {% block header %}
+            <p>click login to see the like button and in the top right nav tabs the link to shoplist and link to likelist. Login fields not working yet. </p>
             <div class="row">
                 {#head section with picture, searchbar and links#}
                 <div class="col-md-12 " style="height:400px">
@@ -156,7 +158,7 @@
     <div class="row">
         {#.......mid left..............................................................................#}
         <div class="col-md-4 row-eq-height">
-            {#soe agenda points#}
+            {#some agenda points#}
             <div class="container">
             <div class="row p-3">
                <div class="border agenda shadow" >
@@ -176,12 +178,12 @@
                 {#make login part#}
                 <img src="assets/img/verrukkulluk-login.png" style="hight:100px;width:150px;top:20%;"class="center"/>
 
-                <form action="index.php" method="GET">{#//still need to finish#}
+                <form action="index.php" method="get">{#//still need to finish/change to a post#}
                     <input type="hidden" name="action" value="login" />
                     <label class="logintext">Email:</label><br>
-                    <input type="text" id="email" name="email"><br>
+                    <input type="text" name="email"><br>
                     <label class="logintext">Password</label><br>
-                    <input type="text" id="password" name="password"><br><br>
+                    <input type="text" name="password"><br><br>
                     <input type="submit" value="Login" class="loginbutton center">
                 </form>
                 </div>
