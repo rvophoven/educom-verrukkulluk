@@ -52,7 +52,7 @@
             {% if session.Login == true %}{#if logged in show like#}
             <a id="likebutton"class=
             {% set break = false %}
-            {% for liked in user.like %} {#look throug all dish like ids #}
+            {% for liked in session.like %} {#look throug all dish like ids #}
                  {% if (liked == data[0].dish.id) %}"likebutton gold_ like-active" liked="1"{% set break = true %}{% endif %}{#if the dish id is in user data make heart gold#}
             {% endfor %}
             {% if break == false %}"likebutton like-deactive " liked="0"{% endif %} {#if id not found set heart deactive#}

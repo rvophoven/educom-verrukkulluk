@@ -118,8 +118,8 @@
        
         {#........header.............................................................................#}      
         {% block header %}
-            <p>click login to see the like button and in the top right nav tabs the link to shoplist and link to likelist. Login fields not working yet. </p>
-            <div class="row">
+            <p>click login to see the like button and in the top right nav tabs the link to shoplist and link to likelist. email: email@gmail.com password: 1234. </p>
+            <div class="row"> 
                 {#head section with picture, searchbar and links#}
                 <div class="col-md-12 " style="height:400px">
                 <div style="background-image: url('assets/img/food.jpg'); object-fit: cover; height:100%;">
@@ -177,15 +177,20 @@
                 <div class="container border login shadow">
                 {#make login part#}
                 <img src="assets/img/verrukkulluk-login.png" style="hight:100px;width:150px;top:20%;"class="center"/>
-
-                <form action="index.php" method="get">{#//still need to finish/change to a post#}
-                    <input type="hidden" name="action" value="login" />
-                    <label class="logintext">Email:</label><br>
+                {% if session.Login == false %}{#if not logged in show#}
+                <form action="http://localhost/educom-verrukkulluk/index.php" method="post">{#//still need to finish/change to a post#}
+                    <input type="hidden" name="action" value="login">
+                    <label class="logintext">Email:</label>
+                    <label class="errortext">{{session.error}}</label><br>{#show error when incorrect#}
                     <input type="text" name="email"><br>
                     <label class="logintext">Password</label><br>
                     <input type="text" name="password"><br><br>
-                    <input type="submit" value="Login" class="loginbutton center">
+                    <button type="submit" class="loginbutton center">Login</button>{#send email and password to index#}
                 </form>
+                {% else %}{#if logged in show#}
+                <p style="color:#FFF; font-size:20px;">Welkom {{session.name}}</p>{#welkom user#}
+                <a class="loginbutton center" style="font-size:40px;" href=index.php?action=logout>Logout</a> 
+                {% endif %}
                 </div>
             </div>
             </div>

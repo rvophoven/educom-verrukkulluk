@@ -152,6 +152,12 @@ html, body {
     font-size: 15px;
     color: #FFF;
 }
+.errortext{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: var(--lighter-orange);
+}
+
 /*align and style top navigation*/
 .topnav {
     float: left;
@@ -273,7 +279,7 @@ justify-content: center;
     border-radius: 4px;
     font-size: 20px;
     font-weight: bold;
-    color: #FFF;
+    color: rgb(150,150,150);
     border: 0;
 }
 
@@ -292,6 +298,7 @@ justify-content: center;
     height: 34px;
     width: 38px;
     border-radius: 4px;
+    
 }
 
 .menu-trigger {
@@ -299,6 +306,7 @@ justify-content: center;
     cursor: pointer;
     transition: all 0.4s ease;
     z-index: 5000 !important;
+    color: rgb(150,150,150);
 }
 
 .menu-trigger:hover {
@@ -315,7 +323,7 @@ justify-content: center;
     left: 0;
     right: 0;
     height: 280px;
-    background-color: #FFF;
+    background-color: rgb(240,240,240);
     transition: all 0.4s ease;
     padding: 40px;
 }
