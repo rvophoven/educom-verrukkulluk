@@ -8,7 +8,9 @@
     {# details dishes #}
 <div class="container" style="display:flex;">
 <div class="row">
-    {% for record in data %}{# get all dishes#}
+{% set i = 1 %}{#set i to 1#}
+    {% for record in data  %}{# get all dishes#}
+    {% if i == session.pages * 2 or i == session.pages * 2 - 1  or title == "likepage" %}{#if first and second dish of page then show and n like show all #}
      <div class="col-md-6 p-3 row-eq-height" style="min-height: 400px; max-height: 600px; min-width:350px">
      <div class="border dishes shadow" >
         
@@ -46,6 +48,9 @@
         
     </div>
     </div>
+    {% endif %}
+
+    {% set i = i + 1 %}{# add 1 to i#}
     {% endfor %}
   
 </div>
@@ -55,21 +60,20 @@
 </div>
 {% endblock %}
 
-{%  block pagination %}{#//still need to finish#}
- 
+{%  block pagination %}{##}
+ {% if title == "homepage" %}{#only show on homepage#}
 <div class="row">
     <div class="col-md-4 center-row" >
     </div>
-    <div class="col-md-8 center-row" >
-        <p>Not yet working -></p>
+    <div class="col-md-8 center-row" >{#center on the right#}
+        
         <div class="pagination">
-        <a href="#">&laquo;</a>
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">&raquo;</a>
+        {% for i in 1..4 %}{#make onlt 4 pages. set current page active and number pages#}
+        <a class="pages page{{ i }} {% if i == session.pages %} active {% endif %}" number="{{ i }}" href=index.php?page={{ i }}>{{ i }}</a>
+        {% endfor %}
         </div>
     </div>
 </div>
+{% endif %}
 {%  endblock %}
 

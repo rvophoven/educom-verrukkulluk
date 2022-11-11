@@ -70,6 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rating = isset($_GET["rating"]) ? $_GET["rating"] : "";
     $searchText = isset($_GET["search"]) ? $_GET["search"] : "";
     $lijst_id = isset($_GET["lijst_id"]) ? $_GET["lijst_id"] : "";
+    $_SESSION['pages'] = isset($_GET["page"]) ? $_GET["page"] : 1;
 }
 
 /*switch between pages or actions */
@@ -137,8 +138,9 @@ switch($action) {
             
             $_SESSION['like'] = $dish->likesUser($_SESSION['id']);
             $data = $dish->selectDishes($_SESSION['like']);
+            $_SESSION["pages"] = 0;
             $template = 'homepage.html.twig';
-            $title = "homepage";
+            $title = "likepage";
             break;
         }
 
@@ -153,11 +155,13 @@ switch($action) {
         case "logout" : {//logout user
             session_unset();
             $_SESSION["Login"] = false;
+            $_SESSION["pages"] = 1;
             $template = 'homepage.html.twig';
             $title = "homepage";
             
             break;
         }
+
 }
 
 
