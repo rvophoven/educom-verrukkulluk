@@ -31,6 +31,7 @@ $dish = new dish($db->getConnection());
 $list = new shoplist($db->getConnection());
 $user = new user($db->getConnection());
 $data = $dish->selectDishes();
+$data2=[];
 
 /*
 URL:
@@ -78,6 +79,14 @@ switch($action) {
 
         case "homepage": {/*get dishes and show homepage*/
             $data = $dish->selectDishes();
+           // $i = 1;
+           // foreach($data as $value){
+          //     if ($i == $_SESSION['pages'] * 2 || $i == $_SESSION['pages'] * 2 - 1){
+           //         $data2[] = $value;
+          //      }
+          //      $i++;
+           // }
+           // $data = $data2;
             $template = 'homepage.html.twig';
             $title = "homepage";
             break;
@@ -148,7 +157,6 @@ switch($action) {
             $_SESSION["Login"] = true;
             $template = 'homepage.html.twig';
             $title = "homepage";
-
             break;
         }
 
